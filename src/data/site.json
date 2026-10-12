@@ -1,0 +1,17 @@
+{
+  "name": "Fair Handy",
+  "tagline": "Die nachhaltige Handyklinik am Tor zum Hochwald",
+  "owner": "Sunardi",
+  "street": "Weiskircher Str. 9",
+  "zip": "66687",
+  "city": "Wadern-Nunkirchen",
+  "phoneDisplay": "0157 81922829",
+  "phoneIntl": "+4915781922829",
+  "whatsapp": "4915781922829",
+  "email": "info@fairhandy.eu",
+  "vatId": "DE 342252205",
+  "hours": [
+    { "days": "Montag – Freitag", "time": "12:00 – 17:00 Uhr" },
+    { "days": "Samstag & Sonntag", "time": "geschlossen" }
+  ]
+}

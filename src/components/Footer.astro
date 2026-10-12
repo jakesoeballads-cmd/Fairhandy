@@ -1,0 +1,46 @@
+---
+import site from '../data/site.json';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <p class="footer__brand">{site.name}</p>
+      <p>{site.tagline}</p>
+    </div>
+    <div>
+      <p class="footer__title">Adresse</p>
+      <p>{site.street}<br />{site.zip} {site.city}</p>
+    </div>
+    <div>
+      <p class="footer__title">Kontakt</p>
+      <p>
+        <a href={`tel:${site.phoneIntl}`}>{site.phoneDisplay}</a><br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+    <div>
+      <p class="footer__title">Öffnungszeiten</p>
+      {site.hours.map((h) => <p class="footer__hours">{h.days}<br /><strong>{h.time}</strong></p>)}
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>© {year} {site.name}</span>
+    <nav aria-label="Rechtliches">
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--green-900); color: #c9ddd3; padding: 56px 0 24px; }
+  .footer a { color: #e7f3ec; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  .footer__grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .footer__brand { font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; color: var(--white); margin-bottom: 0.3em; }
+  .footer__title { font-weight: 700; color: var(--white); margin-bottom: 0.4em; }
+  .footer__hours { margin-bottom: 0.6em; }
+  .footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.12); font-size: 0.9rem; }
+  .footer__bottom nav { display: flex; gap: 20px; }
+</style>

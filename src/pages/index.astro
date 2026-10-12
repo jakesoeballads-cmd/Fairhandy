@@ -1,0 +1,252 @@
+---
+import Base from '../layouts/Base.astro';
+import Preisrechner from '../components/Preisrechner.astro';
+import site from '../data/site.json';
+
+const leistungen = [
+  { icon: '🛠️', titel: 'Smartphone-Reparaturen', text: 'Vom Displayschaden über Wasserschäden und Akkutausch bis zur aufwendigen Chip-Reparatur. 12 Monate Garantie auf alle verbauten Teile.' },
+  { icon: '💾', titel: 'Software & Daten', text: 'Software-Updates, Datenrettung, Datenübertragung oder sichere Löschung. Kostenloser Check und unverbindlicher Kostenvoranschlag, auch für Versicherungsfälle.' },
+  { icon: '🔄', titel: 'An- und Verkauf', text: 'Lohnt sich die Reparatur nicht mehr? Wir kaufen Ihr altes Gerät an. Beim Kauf eines Smartphones bei uns übertragen wir Ihre Daten.' },
+  { icon: '🌱', titel: 'Nachhaltiges Zubehör', text: 'Hüllen von Pela Case und Glided aus pflanzlichen oder recycelten Materialien, Ladekabel sowie Panzerglas und Hydrogel-Schutzfolien.' },
+];
+
+const werte = [
+  { titel: 'Nachhaltigkeit', text: 'Wir verwenden recycelte und aufbereitete Originalteile. Jede Reparatur spart Ressourcen und Elektroschrott.' },
+  { titel: 'Persönlicher Service', text: 'Ehrliche Beratung: Wir sagen Ihnen offen, ob sich eine Reparatur lohnt oder ob ein gebrauchtes Gerät die bessere Wahl ist.' },
+  { titel: '12 Monate Garantie', text: 'Auf alle verbauten Teile. Erreichbar per Telefon, WhatsApp, E-Mail oder direkt im Laden.' },
+];
+
+const zahlen = [
+  { wert: 20, suffix: '+', label: 'Jahre Erfahrung' },
+  { wert: 614, suffix: '+', label: 'iPhones verkauft über eBay seit 2018' },
+  { wert: 100, suffix: ' %', label: 'Kundenzufriedenheit auf eBay' },
+  { wert: 12, suffix: '', label: 'Monate Garantie' },
+];
+---
+<Base>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow">Handyreparatur in {site.city}</p>
+        <h1>Ihr Handy kaputt? Wir machen es wieder <em>fair</em> ganz.</h1>
+        <p class="lead">{site.tagline}. Reparaturen, gebrauchte Smartphones und nachhaltiges Zubehör zu fairen Preisen, mit 12 Monaten Garantie.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="/reparatur/">Preis berechnen</a>
+          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">WhatsApp schreiben</a>
+        </div>
+        <p class="hero__open" id="offen-status">Mo – Fr 12:00 – 17:00 Uhr</p>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__screen">
+            <div class="phone__crack"></div>
+            <div class="phone__fix">✓ Repariert</div>
+          </div>
+        </div>
+        <div class="bubble bubble--1">🔋 Akku neu</div>
+        <div class="bubble bubble--2">♻ Originalteile</div>
+        <div class="bubble bubble--3">🛡 12 Mon. Garantie</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="leistungen">
+    <div class="container">
+      <p class="eyebrow">Leistungen</p>
+      <h2>Was bieten wir an?</h2>
+      <div class="grid grid--4" style="margin-top: 32px;">
+        {leistungen.map((l) => (
+          <article class="card reveal">
+            <div class="card__icon">{l.icon}</div>
+            <h3>{l.titel}</h3>
+            <p>{l.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container rabatt reveal">
+      <div>
+        <p class="eyebrow" style="color: var(--accent);">Rabattaktion</p>
+        <h2>10 % Rabatt bei mehreren Reparaturen</h2>
+        <p>Buchen Sie mehrere Reparaturen auf einmal und sparen Sie 10 % auf den Gesamtpreis.</p>
+      </div>
+      <a class="btn btn--whatsapp" href="/reparatur/">Jetzt Preis berechnen</a>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <p class="eyebrow">Preisrechner</p>
+      <h2>Was kostet meine Reparatur?</h2>
+      <p class="lead" style="margin-bottom: 32px;">In drei Klicks zur Einschätzung und direkt per WhatsApp anfragen.</p>
+      <Preisrechner />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Warum Fair Handy?</p>
+      <h2>Fair für Sie. Fair für die Umwelt.</h2>
+      <div class="grid grid--3" style="margin-top: 32px;">
+        {werte.map((w, i) => (
+          <article class="wert reveal">
+            <span class="wert__nr">0{i + 1}</span>
+            <h3>{w.titel}</h3>
+            <p>{w.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="ueber-uns">
+    <div class="container ueber">
+      <div class="reveal">
+        <p class="eyebrow">Wer sind wir?</p>
+        <h2>Über 20 Jahre Erfahrung in der Elektronik</h2>
+        <p>Sunardi arbeitet seit 1998 als Informationselektroniker. Zuvor führte er einen Handyladen in Indonesien und ein B2B-Unternehmen in den Niederlanden.</p>
+        <p>Im Dezember 2024 eröffnete er gemeinsam mit seiner Partnerin Florence Fair Handy in Wadern-Nunkirchen, mit dem Ziel, Reparaturen fair, ehrlich und nachhaltig anzubieten.</p>
+      </div>
+      <div class="zahlen">
+        {zahlen.map((z) => (
+          <div class="zahl reveal">
+            <span class="zahl__wert" data-ziel={z.wert} data-suffix={z.suffix}>{z.wert}{z.suffix}</span>
+            <span class="zahl__label">{z.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kontakt">
+    <div class="container kontakt">
+      <div class="reveal">
+        <p class="eyebrow">Kontakt</p>
+        <h2>Besuchen Sie uns</h2>
+        <p class="lead">Kommen Sie einfach vorbei oder schreiben Sie uns. Der Check ist kostenlos und unverbindlich.</p>
+        <ul class="kontakt__liste">
+          <li><strong>Adresse</strong><span>{site.street}, {site.zip} {site.city}</span></li>
+          <li><strong>Telefon & WhatsApp</strong><a href={`tel:${site.phoneIntl}`}>{site.phoneDisplay}</a></li>
+          <li><strong>E-Mail</strong><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          {site.hours.map((h) => <li><strong>{h.days}</strong><span>{h.time}</span></li>)}
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn--primary" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${site.street}, ${site.zip} ${site.city}`)}`} target="_blank" rel="noopener">Route planen</a>
+        </div>
+      </div>
+      <div class="karte reveal">
+        <div class="karte__platzhalter" id="karte">
+          <p><strong>Karte anzeigen?</strong></p>
+          <p>Beim Laden der Karte werden Daten an Google übertragen.</p>
+          <button type="button" class="btn btn--primary" id="karte-laden">Karte laden</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Zahlen hochzählen, wenn sie sichtbar werden
+  const zaehler = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      const el = e.target as HTMLElement;
+      const ziel = Number(el.dataset.ziel);
+      const suffix = el.dataset.suffix ?? '';
+      const start = performance.now();
+      const dauer = 1200;
+      const tick = (t: number) => {
+        const p = Math.min((t - start) / dauer, 1);
+        el.textContent = Math.round(ziel * (1 - Math.pow(1 - p, 3))) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(tick);
+      zaehler.unobserve(el);
+    }
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.zahl__wert').forEach((el) => zaehler.observe(el));
+
+  // Geöffnet / geschlossen (Zeitzone Berlin)
+  const status = document.getElementById('offen-status');
+  if (status) {
+    const teile = new Intl.DateTimeFormat('de-DE', { timeZone: 'Europe/Berlin', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+    const tag = teile.find((p) => p.type === 'weekday')?.value ?? '';
+    const stunde = Number(teile.find((p) => p.type === 'hour')?.value);
+    const werktag = ['Mo', 'Di', 'Mi', 'Do', 'Fr'].includes(tag.replace('.', ''));
+    const offen = werktag && stunde >= 12 && stunde < 17;
+    status.classList.add(offen ? 'is-offen' : 'is-zu');
+    status.textContent = (offen ? 'Jetzt geöffnet · ' : 'Gerade geschlossen · ') + 'Mo – Fr 12:00 – 17:00 Uhr';
+  }
+
+  // Google-Karte erst nach Zustimmung laden (DSGVO)
+  document.getElementById('karte-laden')?.addEventListener('click', () => {
+    const box = document.getElementById('karte');
+    if (!box) return;
+    box.innerHTML = '<iframe title="Karte: Fair Handy" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Weiskircher+Str.+9,+66687+Wadern-Nunkirchen&output=embed"></iframe>';
+  });
+</script>
+
+<style>
+  .hero { padding: 72px 0 96px; background: radial-gradient(circle at 85% 20%, var(--green-100), transparent 55%); overflow: hidden; }
+  .hero__grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+  .hero h1 em { font-style: italic; color: var(--green-500); }
+  .hero .lead { margin-bottom: 28px; }
+  .hero__open { margin-top: 20px; font-size: 0.95rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
+  .hero__open::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-soft); }
+  .hero__open.is-offen::before { background: #2fbf71; box-shadow: 0 0 0 4px rgba(47, 191, 113, 0.2); }
+  .hero__open.is-zu::before { background: #d9534f; }
+
+  .hero__visual { position: relative; height: 440px; }
+  .phone { position: absolute; left: 50%; top: 50%; width: 210px; height: 420px; transform: translate(-50%, -50%) rotate(-6deg); border-radius: 36px; background: var(--green-900); padding: 12px; box-shadow: 0 30px 60px rgba(18, 53, 42, 0.3); animation: schweben 6s ease-in-out infinite; }
+  .phone__screen { position: relative; height: 100%; border-radius: 26px; overflow: hidden; background: linear-gradient(160deg, #3fa57d, #1f5c46); }
+  .phone__crack { position: absolute; inset: 0; background:
+    linear-gradient(115deg, transparent 48%, rgba(255,255,255,0.7) 49%, transparent 50%),
+    linear-gradient(35deg, transparent 58%, rgba(255,255,255,0.55) 59%, transparent 60%),
+    linear-gradient(160deg, transparent 38%, rgba(255,255,255,0.5) 39%, transparent 40%);
+    animation: crack 6s ease-in-out infinite; }
+  .phone__fix { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--white); color: var(--green-700); font-weight: 700; padding: 10px 18px; border-radius: 999px; white-space: nowrap; animation: fix 6s ease-in-out infinite; }
+  .bubble { position: absolute; background: var(--white); padding: 10px 16px; border-radius: 999px; box-shadow: var(--shadow); font-weight: 600; font-size: 0.9rem; white-space: nowrap; animation: schweben 5s ease-in-out infinite; }
+  .bubble--1 { top: 40px; left: 0; }
+  .bubble--2 { top: 190px; right: -10px; animation-delay: -1.5s; }
+  .bubble--3 { bottom: 40px; left: 10px; animation-delay: -3s; }
+  @keyframes schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+  @keyframes crack { 0%, 35% { opacity: 1; } 50%, 90% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes fix { 0%, 40% { opacity: 0; scale: 0.8; } 55%, 88% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 0.8; } }
+  @media (prefers-reduced-motion: reduce) {
+    .phone, .bubble, .phone__crack, .phone__fix { animation: none; }
+    .phone__crack { opacity: 0; }
+  }
+
+  .rabatt { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+  .rabatt p { margin: 0; }
+
+  .wert { padding-top: 20px; border-top: 3px solid var(--green-500); }
+  .wert__nr { font-family: 'Fraunces', Georgia, serif; font-size: 2.4rem; color: var(--green-100); -webkit-text-stroke: 1px var(--green-500); display: block; margin-bottom: 8px; }
+  .wert p { color: var(--ink-soft); }
+
+  .ueber { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .zahlen { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .zahl { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+  .zahl__wert { display: block; font-family: 'Fraunces', Georgia, serif; font-size: 2.6rem; color: var(--green-700); line-height: 1; margin-bottom: 8px; }
+  .zahl__label { color: var(--ink-soft); font-size: 0.95rem; }
+
+  .kontakt { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .kontakt__liste { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
+  .kontakt__liste li { display: grid; grid-template-columns: 170px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(18, 53, 42, 0.08); }
+  .karte { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); min-height: 380px; background: var(--green-100); }
+  .karte__platzhalter { height: 100%; min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; }
+  .karte__platzhalter :global(iframe) { width: 100%; height: 100%; min-height: 380px; border: 0; }
+  .karte__platzhalter:has(iframe) { padding: 0; }
+
+  @media (max-width: 860px) {
+    .hero { padding: 40px 0 64px; }
+    .hero__grid, .ueber, .kontakt { grid-template-columns: 1fr; }
+    .hero__visual { height: 320px; }
+    .phone { width: 160px; height: 320px; }
+    .kontakt__liste li { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>

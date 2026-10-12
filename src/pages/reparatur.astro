@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import Preisrechner from '../components/Preisrechner.astro';
+---
+<Base title="Preisrechner Reparatur" description="Berechnen Sie in drei Klicks, was die Reparatur Ihres Smartphones oder Tablets bei Fair Handy in Wadern-Nunkirchen kostet.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Preisrechner</p>
+      <h1>Was kostet meine Reparatur?</h1>
+      <p class="lead" style="margin-bottom: 32px;">Marke, Modell und Schaden wählen, und Sie sehen sofort eine Einschätzung. Mit einem Klick können Sie per WhatsApp anfragen. Der Check vor Ort ist kostenlos und unverbindlich.</p>
+      <Preisrechner />
+      <div class="grid grid--3" style="margin-top: 48px;">
+        <div class="card"><div class="card__icon">🛡</div><h3>12 Monate Garantie</h3><p>Auf alle verbauten Teile.</p></div>
+        <div class="card"><div class="card__icon">♻</div><h3>Nachhaltige Teile</h3><p>Recycelte und aufbereitete Originalteile.</p></div>
+        <div class="card"><div class="card__icon">%</div><h3>10 % Mehrfachrabatt</h3><p>Bei mehreren Reparaturen auf einmal.</p></div>
+      </div>
+    </div>
+  </section>
+</Base>
