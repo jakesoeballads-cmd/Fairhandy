@@ -15,24 +15,16 @@ npm run build    # erzeugt ./dist
 
 | Was | Datei |
 | --- | --- |
-| Adresse, Telefon, Öffnungszeiten, USt-ID | `src/data/site.json` |
-| Reparaturpreise für den Preisrechner | `src/data/preise.json` |
+| Adresse, Telefon, Öffnungszeiten, USt-ID, RepairDash-Link | `src/data/site.json` |
 | Startseite (Texte, Abschnitte) | `src/pages/index.astro` |
-| Preisrechner-Seite | `src/pages/reparatur.astro` |
+| Preise & Online-Auftrag (RepairDash-Widget) | `src/pages/reparatur.astro` |
 | Impressum / Datenschutz | `src/pages/impressum.astro`, `src/pages/datenschutz.astro` |
 | Farben und Grundstil | `src/styles/global.css` |
 
-### Preise eintragen
+### Preise
 
-In `src/data/preise.json` hat jedes Modell ein Feld `preise`. Schlüssel sind die Schadens-IDs
-(`display`, `akku`, `ladebuchse`, `kamera`, `rueckglas`, `wasser`, `software`), Werte sind Euro-Beträge:
-
-```json
-{ "name": "iPhone 13", "preise": { "display": 129, "akku": 69 } }
-```
-
-Fehlt ein Preis, zeigt der Rechner „Preis auf Anfrage“ und bietet die Anfrage per WhatsApp an.
-Bei mehreren Schäden wird automatisch der Mehrfachrabatt (`rabattMehrfach`, aktuell 10 %) abgezogen.
+Die Reparaturpreise kommen direkt aus **RepairDash** (RepairWidget, Link in `site.json` → `bookingUrl`).
+Preise werden nur in RepairDash gepflegt; Aufträge von der Website landen automatisch dort.
 
 ## Deployment (Hostinger)
 
@@ -51,7 +43,7 @@ IP von Hostinger ändern. Die `MX`-Einträge für E-Mail **nicht** ändern.
 
 ## Vor dem Livegang
 
-- [ ] Echte Preise in `src/data/preise.json`
+- [ ] RepairDash-Widget auf /reparatur/ geprüft (Preise sichtbar, Buchung klappt)
 - [ ] Vollständige Datenschutzerklärung in `src/pages/datenschutz.astro`
 - [ ] Echte Fotos aus dem Laden (statt der Illustration)
 - [ ] DNS bei IONOS umstellen

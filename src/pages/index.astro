@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Preisrechner from '../components/Preisrechner.astro';
 import site from '../data/site.json';
 
 const leistungen = [
@@ -31,7 +30,7 @@ const zahlen = [
         <h1>Ihr Handy kaputt? Wir machen es wieder <em>fair</em> ganz.</h1>
         <p class="lead">{site.tagline}. Reparaturen, gebrauchte Smartphones und nachhaltiges Zubehör zu fairen Preisen, mit 12 Monaten Garantie.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="/reparatur/">Preis berechnen</a>
+          <a class="btn btn--primary" href="/reparatur/">Preis & Termin online</a>
           <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">WhatsApp schreiben</a>
         </div>
         <p class="hero__open" id="offen-status">Mo – Fr 12:00 – 17:00 Uhr</p>
@@ -73,16 +72,23 @@ const zahlen = [
         <h2>10 % Rabatt bei mehreren Reparaturen</h2>
         <p>Buchen Sie mehrere Reparaturen auf einmal und sparen Sie 10 % auf den Gesamtpreis.</p>
       </div>
-      <a class="btn btn--whatsapp" href="/reparatur/">Jetzt Preis berechnen</a>
+      <a class="btn btn--whatsapp" href="/reparatur/">Preise ansehen</a>
     </div>
   </section>
 
   <section class="section section--alt">
     <div class="container">
-      <p class="eyebrow">Preisrechner</p>
-      <h2>Was kostet meine Reparatur?</h2>
-      <p class="lead" style="margin-bottom: 32px;">In drei Klicks zur Einschätzung und direkt per WhatsApp anfragen.</p>
-      <Preisrechner />
+      <div class="online reveal">
+        <div>
+          <p class="eyebrow">Online-Reparaturauftrag</p>
+          <h2>Preis sehen, Auftrag anlegen, fertig.</h2>
+          <p class="lead">Wählen Sie Ihr Gerät und die Reparatur, sehen Sie sofort den Preis und legen Sie Ihren Auftrag online an, rund um die Uhr.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="/reparatur/">Zu Preisen & Online-Auftrag</a>
+          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">Lieber per WhatsApp</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -221,6 +227,9 @@ const zahlen = [
     .phone__crack { opacity: 0; }
   }
 
+  .online { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+  .online .lead { margin-bottom: 0; }
+  @media (max-width: 860px) { .online { grid-template-columns: 1fr; } }
   .rabatt { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
   .rabatt p { margin: 0; }
 
