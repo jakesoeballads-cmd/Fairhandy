@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      full_upload:
+        description: 'Alle Dateien neu hochladen (z. B. wenn auf dem Server etwas gelöscht wurde)'
+        type: boolean
+        default: false
 
 concurrency:
   group: deploy
@@ -53,3 +58,5 @@ jobs:
           protocol: ftps
           local-dir: ./dist/
           server-dir: ${{ secrets.FTP_SERVER_DIR || './' }}
+          # Neuer State-Name = Action hält den Server für leer und lädt alles hoch
+          state-name: ${{ inputs.full_upload && format('.ftp-deploy-full-{0}.json', github.run_id) || '.ftp-deploy-sync-state.json' }}
