@@ -24,6 +24,10 @@ jobs:
       - run: npm run build
 
       - name: Upload to Hostinger via FTP
+        # Läuft erst, wenn die FTP-Secrets eingetragen sind
+        if: ${{ env.FTP_SERVER != '' }}
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
