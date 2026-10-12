@@ -23,6 +23,23 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      - name: Prepare FTP server address
+        id: ftp
+        if: ${{ env.FTP_SERVER != '' }}
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          # Entfernt "ftp://", Port, Pfad und Leerzeichen aus dem Secret
+          clean=$(printf '%s' "$FTP_SERVER" | tr -d '[:space:]' | sed -E 's#^[A-Za-z]+://##; s#[/:].*$##')
+          echo "::add-mask::$clean"
+          if [[ "$clean" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then kind="IP-Adresse"; else kind="Hostname"; fi
+          echo "FTP_SERVER: $kind, ${#clean} Zeichen (Original ${#FTP_SERVER})"
+          if [ "$kind" = "Hostname" ] && ! getent hosts "$clean" >/dev/null; then
+            echo "::error::FTP_SERVER ist kein gültiger Hostname. Bitte die FTP-IP aus hPanel eintragen."
+            exit 1
+          fi
+          echo "server=$clean" >> "$GITHUB_OUTPUT"
+
       - name: Upload to Hostinger via FTP
         # Läuft erst, wenn die FTP-Secrets eingetragen sind
         if: ${{ env.FTP_SERVER != '' }}
@@ -30,7 +47,7 @@ jobs:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ steps.ftp.outputs.server }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
