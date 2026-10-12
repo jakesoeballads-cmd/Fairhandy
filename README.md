@@ -44,7 +44,7 @@ In GitHub unter **Settings → Secrets and variables → Actions** diese Secrets
 | `FTP_SERVER` | `ftp.fairhandy.eu` oder die IP aus hPanel |
 | `FTP_USERNAME` | FTP-Benutzername |
 | `FTP_PASSWORD` | FTP-Passwort |
-| `FTP_SERVER_DIR` | optional, Standard `public_html/` |
+| `FTP_SERVER_DIR` | optional, Standard `./` (das FTP-Konto von Hostinger startet bereits in `public_html`) |
 
 Die Domain bleibt bei IONOS registriert. Dort nur die DNS-Einträge `A` (für `@` und `www`) auf die
 IP von Hostinger ändern. Die `MX`-Einträge für E-Mail **nicht** ändern.
