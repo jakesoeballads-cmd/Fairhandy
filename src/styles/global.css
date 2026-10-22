@@ -20,15 +20,7 @@
   line-height: 1.6;
 }
 
-/* Farbpaletten: Primär (--green-*), Sekundär (--secondary), Akzent (--accent) */
-:root[data-farbe='2'] {
-  --green-900: #0a3239; --green-700: #0f5560; --green-500: #1b8796; --green-100: #e1f1f3;
-  --secondary: #77c8a6; --accent: #ff7a59; --schatten: 10, 50, 57;
-}
-:root[data-farbe='3'] {
-  --green-900: #15233b; --green-700: #22385c; --green-500: #3a6fb0; --green-100: #e6edf7;
-  --secondary: #77c8a6; --accent: #f5c242; --schatten: 21, 35, 59;
-}
+/* Farben: Primär (--green-*), Sekundär (--secondary), Akzent (--accent) */
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }

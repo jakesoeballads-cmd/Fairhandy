@@ -56,10 +56,6 @@ const localBusiness = {
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="de_DE" />
     <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
-    <script is:inline>
-      // Farbpalette zum Vergleichen: ?farbe=1, 2 oder 3
-      try { const f = new URLSearchParams(location.search).get('farbe'); if (f === '2' || f === '3') document.documentElement.dataset.farbe = f; } catch (e) {}
-    </script>
   </head>
   <body>
     <Header />
