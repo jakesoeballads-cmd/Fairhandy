@@ -12,8 +12,7 @@ const links = [
   <a class="skip" href="#inhalt">Zum Inhalt springen</a>
   <div class="container header__inner">
     <a class="logo" href="/">
-      <span class="logo__mark" aria-hidden="true">♻</span>
-      <span>{site.name}</span>
+      <img src="/img/logo.png" alt={site.name} width="640" height="286" />
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="hauptmenue">
       <span class="sr">Menü</span>
@@ -46,6 +45,7 @@ const links = [
   .header { position: sticky; top: 0; z-index: 40; background: rgba(250, 248, 243, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(18, 53, 42, 0.08); }
   .header__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
   .logo { display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 1.35rem; color: var(--green-900); text-decoration: none; }
+  .logo img { height: 50px; width: auto; display: block; }
   .logo__mark { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--green-700); color: var(--white); font-size: 1.2rem; }
   .nav { display: flex; align-items: center; gap: 28px; }
   .nav a:not(.btn) { color: var(--ink); text-decoration: none; font-weight: 500; }
