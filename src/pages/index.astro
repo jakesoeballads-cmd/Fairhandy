@@ -94,8 +94,9 @@ const zahlen = [
 
   <section class="section">
     <div class="container">
-      <p class="eyebrow">Warum Fair Handy?</p>
+      <p class="eyebrow">Rethink, Reuse, Recycle!</p>
       <h2>Fair für Sie. Fair für die Umwelt.</h2>
+      <p class="lead" style="max-width: 680px;">Unser Fokus auf Nachhaltigkeit spiegelt sich in unserer gesamten Geschäftsidee wider.</p>
       <div class="grid grid--3" style="margin-top: 32px;">
         {werte.map((w, i) => (
           <article class="wert reveal">
@@ -113,8 +114,8 @@ const zahlen = [
       <div class="reveal">
         <p class="eyebrow">Wer sind wir?</p>
         <h2>Über 20 Jahre Erfahrung in der Elektronik</h2>
-        <p>Sunardi arbeitet seit 1998 als Informationselektroniker. Zuvor führte er einen Handyladen in Indonesien und ein B2B-Unternehmen in den Niederlanden.</p>
-        <p>Im Dezember 2024 eröffnete er gemeinsam mit seiner Partnerin Florence Fair Handy in Wadern-Nunkirchen, mit dem Ziel, Reparaturen fair, ehrlich und nachhaltig anzubieten.</p>
+        <p>Sunardi ist bereits seit 1998 Informationselektroniker. In Indonesien führte er einen Smartphone-Laden mit mehreren Mitarbeitern. 2015 zog er in die Niederlande und gründete 2016 bei Eindhoven das Unternehmen „Fair Cellution“, das vor allem im B2B-Bereich tätig war.</p>
+        <p>Als seine Partnerin Florence in ihre Heimat zurückkehren wollte, konzentrierte er sich auf den Online-Verkauf von Smartphones über eBay. Im Dezember 2024 eröffneten die beiden schließlich Fair Handy in Wadern-Nunkirchen, mit dem Ziel, Reparaturen fair, ehrlich und nachhaltig anzubieten.</p>
       </div>
       <div class="zahlen">
         {zahlen.map((z) => (
@@ -123,6 +124,19 @@ const zahlen = [
             <span class="zahl__label">{z.label}</span>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="shop reveal">
+        <div>
+          <p class="eyebrow">Online-Shop</p>
+          <h2>Gebrauchte Smartphones & Ersatzteile</h2>
+          <p class="lead">Besuchen Sie Fair Handy und entdecken Sie unsere Auswahl an gebrauchten Smartphones und Reparaturteilen. Unser Online-Shop ist bald online!</p>
+        </div>
+        <span class="shop__badge">Bald online</span>
       </div>
     </div>
   </section>
@@ -237,6 +251,10 @@ const zahlen = [
   .wert__nr { font-family: 'Fraunces', Georgia, serif; font-size: 2.4rem; color: var(--green-100); -webkit-text-stroke: 1px var(--green-500); display: block; margin-bottom: 8px; }
   .wert p { color: var(--ink-soft); }
 
+  .shop { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 36px; border-radius: 24px; border: 2px dashed rgba(18, 53, 42, 0.18); background: var(--white); }
+  .shop h2 { margin-top: 0; }
+  .shop__badge { flex-shrink: 0; padding: 0.5em 1.1em; border-radius: 999px; background: var(--green-700); color: var(--white); font-weight: 600; }
+  @media (max-width: 700px) { .shop { flex-direction: column; align-items: flex-start; padding: 24px; } }
   .ueber { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
   .zahlen { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .zahl { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
