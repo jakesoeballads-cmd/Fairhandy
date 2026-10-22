@@ -1,12 +1,13 @@
 ---
+import Icon from '../components/Icon.astro';
 import Base from '../layouts/Base.astro';
 import site from '../data/site.json';
 
 const leistungen = [
-  { icon: '🛠️', titel: 'Smartphone-Reparaturen', text: 'Vom Displayschaden über Wasserschäden und Akkutausch bis zur aufwendigen Chip-Reparatur. 12 Monate Garantie auf alle verbauten Teile.' },
-  { icon: '💾', titel: 'Software & Daten', text: 'Software-Updates, Datenrettung, Datenübertragung oder sichere Löschung. Kostenloser Check und unverbindlicher Kostenvoranschlag, auch für Versicherungsfälle.' },
-  { icon: '🔄', titel: 'An- und Verkauf', text: 'Lohnt sich die Reparatur nicht mehr? Wir kaufen Ihr altes Gerät an. Beim Kauf eines Smartphones bei uns übertragen wir Ihre Daten.' },
-  { icon: '🌱', titel: 'Nachhaltiges Zubehör', text: 'Hüllen von Pela Case und Glided aus pflanzlichen oder recycelten Materialien, Ladekabel sowie Panzerglas und Hydrogel-Schutzfolien.' },
+  { icon: 'mdiCellphoneCog', titel: 'Smartphone-Reparaturen', text: 'Vom Displayschaden über Wasserschäden und Akkutausch bis zur aufwendigen Chip-Reparatur. 12 Monate Garantie auf alle verbauten Teile.' },
+  { icon: 'mdiCloudSync', titel: 'Software & Daten', text: 'Software-Updates, Datenrettung, Datenübertragung oder sichere Löschung. Kostenloser Check und unverbindlicher Kostenvoranschlag, auch für Versicherungsfälle.' },
+  { icon: 'mdiSwapHorizontalCircle', titel: 'An- und Verkauf', text: 'Lohnt sich die Reparatur nicht mehr? Wir kaufen Ihr altes Gerät an. Beim Kauf eines Smartphones bei uns übertragen wir Ihre Daten.' },
+  { icon: 'mdiLeaf', titel: 'Nachhaltiges Zubehör', text: 'Hüllen von Pela Case und Glided aus pflanzlichen oder recycelten Materialien, Ladekabel sowie Panzerglas und Hydrogel-Schutzfolien.' },
 ];
 
 const werte = [
@@ -30,21 +31,31 @@ const zahlen = [
         <h1>Ihr Handy kaputt? Wir machen es wieder <em>fair</em> ganz.</h1>
         <p class="lead">{site.tagline}. Reparaturen, gebrauchte Smartphones und nachhaltiges Zubehör zu fairen Preisen, mit 12 Monaten Garantie.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="/reparatur/">Preis & Termin online</a>
-          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">WhatsApp schreiben</a>
+          <a class="btn btn--primary" href="/reparatur/"><Icon name="mdiCalendarCheck" size={20} /> Preis & Termin online</a>
+          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener"><Icon name="mdiWhatsapp" size={20} /> WhatsApp schreiben</a>
         </div>
         <p class="hero__open" id="offen-status">Mo – Fr 12:00 – 17:00 Uhr</p>
       </div>
       <div class="hero__visual" aria-hidden="true">
-        <div class="phone">
-          <div class="phone__screen">
-            <div class="phone__crack"></div>
-            <div class="phone__fix">✓ Repariert</div>
+        <div class="szene" id="szene">
+          <div class="glow"></div>
+          <div class="boden"></div>
+          <div class="phone">
+            <div class="phone__lage phone__lage--3"></div>
+            <div class="phone__lage phone__lage--2"></div>
+            <div class="phone__lage phone__lage--1"></div>
+            <div class="phone__front">
+              <div class="phone__screen">
+                <div class="phone__crack"></div>
+                <div class="phone__fix"><Icon name="mdiCheckCircle" size={20} /> Repariert</div>
+                <div class="phone__glanz"></div>
+              </div>
+            </div>
           </div>
+          <div class="bubble bubble--1"><Icon name="mdiBatteryCharging" size={20} /> Akku neu</div>
+          <div class="bubble bubble--2"><Icon name="mdiRecycle" size={20} /> Originalteile</div>
+          <div class="bubble bubble--3"><Icon name="mdiShieldCheck" size={20} /> 12 Mon. Garantie</div>
         </div>
-        <div class="bubble bubble--1">🔋 Akku neu</div>
-        <div class="bubble bubble--2">♻ Originalteile</div>
-        <div class="bubble bubble--3">🛡 12 Mon. Garantie</div>
       </div>
     </div>
   </section>
@@ -55,8 +66,8 @@ const zahlen = [
       <h2>Was bieten wir an?</h2>
       <div class="grid grid--4" style="margin-top: 32px;">
         {leistungen.map((l) => (
-          <article class="card reveal">
-            <div class="card__icon">{l.icon}</div>
+          <article class="card tilt reveal">
+            <div class="card__icon"><Icon name={l.icon as any} size={30} /></div>
             <h3>{l.titel}</h3>
             <p>{l.text}</p>
           </article>
@@ -72,7 +83,7 @@ const zahlen = [
         <h2>10 % Rabatt bei mehreren Reparaturen</h2>
         <p>Buchen Sie mehrere Reparaturen auf einmal und sparen Sie 10 % auf den Gesamtpreis.</p>
       </div>
-      <a class="btn btn--whatsapp" href="/reparatur/">Preise ansehen</a>
+      <a class="btn btn--accent" href="/reparatur/"><Icon name="mdiSale" size={20} /> Preise ansehen</a>
     </div>
   </section>
 
@@ -119,7 +130,7 @@ const zahlen = [
       </div>
       <div class="zahlen">
         {zahlen.map((z) => (
-          <div class="zahl reveal">
+          <div class="zahl tilt reveal">
             <span class="zahl__wert" data-ziel={z.wert} data-suffix={z.suffix}>{z.wert}{z.suffix}</span>
             <span class="zahl__label">{z.label}</span>
           </div>
@@ -130,13 +141,13 @@ const zahlen = [
 
   <section class="section">
     <div class="container">
-      <div class="shop reveal">
+      <div class="shop tilt reveal">
         <div>
           <p class="eyebrow">Online-Shop</p>
           <h2>Gebrauchte Smartphones & Ersatzteile</h2>
           <p class="lead">Besuchen Sie Fair Handy und entdecken Sie unsere Auswahl an gebrauchten Smartphones und Reparaturteilen. Unser Online-Shop ist bald online!</p>
         </div>
-        <span class="shop__badge">Bald online</span>
+        <span class="shop__badge"><Icon name="mdiStorefront" size={20} /> Bald online</span>
       </div>
     </div>
   </section>
@@ -148,14 +159,14 @@ const zahlen = [
         <h2>Besuchen Sie uns</h2>
         <p class="lead">Kommen Sie einfach vorbei oder schreiben Sie uns. Der Check ist kostenlos und unverbindlich.</p>
         <ul class="kontakt__liste">
-          <li><strong>Adresse</strong><span>{site.street}, {site.zip} {site.city}</span></li>
-          <li><strong>Telefon & WhatsApp</strong><a href={`tel:${site.phoneIntl}`}>{site.phoneDisplay}</a></li>
-          <li><strong>E-Mail</strong><a href={`mailto:${site.email}`}>{site.email}</a></li>
-          {site.hours.map((h) => <li><strong>{h.days}</strong><span>{h.time}</span></li>)}
+          <li><strong><Icon name="mdiMapMarker" size={20} /> Adresse</strong><span>{site.street}, {site.zip} {site.city}</span></li>
+          <li><strong><Icon name="mdiPhone" size={20} /> Telefon & WhatsApp</strong><a href={`tel:${site.phoneIntl}`}>{site.phoneDisplay}</a></li>
+          <li><strong><Icon name="mdiEmail" size={20} /> E-Mail</strong><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          {site.hours.map((h) => <li><strong><Icon name="mdiClockOutline" size={20} /> {h.days}</strong><span>{h.time}</span></li>)}
         </ul>
         <div class="btn-row">
-          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn btn--primary" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${site.street}, ${site.zip} ${site.city}`)}`} target="_blank" rel="noopener">Route planen</a>
+          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener"><Icon name="mdiWhatsapp" size={20} /> WhatsApp</a>
+          <a class="btn btn--primary" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${site.street}, ${site.zip} ${site.city}`)}`} target="_blank" rel="noopener"><Icon name="mdiMapMarkerPath" size={20} /> Route planen</a>
         </div>
       </div>
       <div class="karte reveal">
@@ -213,32 +224,48 @@ const zahlen = [
 <style>
   .hero { padding: 72px 0 96px; background: radial-gradient(circle at 85% 20%, var(--green-100), transparent 55%); overflow: hidden; }
   .hero__grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
-  .hero h1 em { font-style: italic; color: var(--green-500); }
+  .hero h1 em { font-style: normal; background: linear-gradient(120deg, var(--green-500), var(--secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero .lead { margin-bottom: 28px; }
   .hero__open { margin-top: 20px; font-size: 0.95rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
   .hero__open::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-soft); }
   .hero__open.is-offen::before { background: #2fbf71; box-shadow: 0 0 0 4px rgba(47, 191, 113, 0.2); }
   .hero__open.is-zu::before { background: #d9534f; }
 
-  .hero__visual { position: relative; height: 440px; }
-  .phone { position: absolute; left: 50%; top: 50%; width: 210px; height: 420px; transform: translate(-50%, -50%) rotate(-6deg); border-radius: 36px; background: var(--green-900); padding: 12px; box-shadow: 0 30px 60px rgba(18, 53, 42, 0.3); animation: schweben 6s ease-in-out infinite; }
-  .phone__screen { position: relative; height: 100%; border-radius: 26px; overflow: hidden; background: linear-gradient(160deg, #3fa57d, #1f5c46); }
+  .hero__visual { position: relative; height: 460px; perspective: 1100px; }
+  .szene { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(var(--sx, 0deg)) rotateY(var(--sy, 0deg)); transition: transform 0.25s ease-out; }
+  .glow { position: absolute; left: 50%; top: 50%; width: 360px; height: 360px; margin: -180px 0 0 -180px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--secondary), transparent 55%), transparent 65%); transform: translateZ(-120px); filter: blur(10px); }
+  .boden { position: absolute; left: 50%; bottom: 6px; width: 220px; height: 34px; margin-left: -110px; border-radius: 50%; background: radial-gradient(ellipse, rgba(var(--schatten), 0.35), transparent 70%); filter: blur(6px); animation: boden 6s ease-in-out infinite; }
+
+  @property --dreh { syntax: '<angle>'; inherits: true; initial-value: -22deg; }
+  .phone { position: absolute; left: 50%; top: 50%; width: 210px; height: 420px; margin: -210px 0 0 -105px; transform-style: preserve-3d; transform: rotateX(10deg) rotateY(var(--dreh)) rotateZ(-5deg); animation: drehen 9s ease-in-out infinite, schweben 6s ease-in-out infinite; }
+  .phone__front, .phone__lage { position: absolute; inset: 0; border-radius: 36px; }
+  .phone__front { background: linear-gradient(145deg, color-mix(in srgb, var(--green-900), white 10%), var(--green-900)); padding: 12px; transform: translateZ(9px); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.08); }
+  .phone__lage { background: color-mix(in srgb, var(--green-900), black 30%); }
+  .phone__lage--1 { transform: translateZ(4px); }
+  .phone__lage--2 { transform: translateZ(-1px); background: color-mix(in srgb, var(--green-900), black 42%); }
+  .phone__lage--3 { transform: translateZ(-6px); background: color-mix(in srgb, var(--green-900), black 55%); }
+  .phone__screen { position: relative; height: 100%; border-radius: 26px; overflow: hidden; background: linear-gradient(160deg, var(--secondary), var(--green-700)); }
+  .phone__glanz { position: absolute; inset: -40%; background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.28) 48%, transparent 56%); animation: glanz 9s ease-in-out infinite; }
   .phone__crack { position: absolute; inset: 0; background:
     linear-gradient(115deg, transparent 48%, rgba(255,255,255,0.7) 49%, transparent 50%),
     linear-gradient(35deg, transparent 58%, rgba(255,255,255,0.55) 59%, transparent 60%),
     linear-gradient(160deg, transparent 38%, rgba(255,255,255,0.5) 39%, transparent 40%);
     animation: crack 6s ease-in-out infinite; }
-  .phone__fix { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--white); color: var(--green-700); font-weight: 700; padding: 10px 18px; border-radius: 999px; white-space: nowrap; animation: fix 6s ease-in-out infinite; }
-  .bubble { position: absolute; background: var(--white); padding: 10px 16px; border-radius: 999px; box-shadow: var(--shadow); font-weight: 600; font-size: 0.9rem; white-space: nowrap; animation: schweben 5s ease-in-out infinite; }
-  .bubble--1 { top: 40px; left: 0; }
-  .bubble--2 { top: 190px; right: -10px; animation-delay: -1.5s; }
-  .bubble--3 { bottom: 40px; left: 10px; animation-delay: -3s; }
-  @keyframes schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+  .phone__fix { display: inline-flex; align-items: center; gap: 6px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--white); color: var(--green-700); font-weight: 700; padding: 10px 18px; border-radius: 999px; white-space: nowrap; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25); animation: fix 6s ease-in-out infinite; }
+  .bubble { display: inline-flex; align-items: center; gap: 6px; position: absolute; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(6px); padding: 10px 16px; border-radius: 999px; box-shadow: var(--shadow-hoch); font-weight: 600; font-size: 0.9rem; white-space: nowrap; animation: schweben 5s ease-in-out infinite; }
+  .bubble--1 { top: 40px; left: 0; transform: translateZ(110px); }
+  .bubble--2 { top: 190px; right: -10px; transform: translateZ(140px); animation-delay: -1.5s; }
+  .bubble--3 { bottom: 40px; left: 10px; transform: translateZ(120px); animation-delay: -3s; }
+  @keyframes drehen { 0%, 100% { --dreh: -24deg; } 50% { --dreh: 8deg; } }
+  @keyframes glanz { 0%, 100% { translate: -30% 0; } 50% { translate: 30% 0; } }
+  @keyframes schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
+  @keyframes boden { 0%, 100% { scale: 1; opacity: 1; } 50% { scale: 0.85; opacity: 0.7; } }
   @keyframes crack { 0%, 35% { opacity: 1; } 50%, 90% { opacity: 0; } 100% { opacity: 1; } }
   @keyframes fix { 0%, 40% { opacity: 0; scale: 0.8; } 55%, 88% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 0.8; } }
   @media (prefers-reduced-motion: reduce) {
-    .phone, .bubble, .phone__crack, .phone__fix { animation: none; }
+    .phone, .bubble, .phone__crack, .phone__fix, .phone__glanz, .boden { animation: none; }
     .phone__crack { opacity: 0; }
+    .szene { transform: none; }
   }
 
   .online { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
@@ -248,22 +275,26 @@ const zahlen = [
   .rabatt p { margin: 0; }
 
   .wert { padding-top: 20px; border-top: 3px solid var(--green-500); }
-  .wert__nr { font-family: 'Fraunces', Georgia, serif; font-size: 2.4rem; color: var(--green-100); -webkit-text-stroke: 1px var(--green-500); display: block; margin-bottom: 8px; }
+  .wert__nr { font-family: 'Poppins', system-ui, sans-serif; font-size: 2.4rem; color: var(--green-100); -webkit-text-stroke: 1px var(--green-500); display: block; margin-bottom: 8px; }
   .wert p { color: var(--ink-soft); }
 
-  .shop { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 36px; border-radius: 24px; border: 2px dashed rgba(18, 53, 42, 0.18); background: var(--white); }
+  .shop { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 36px; border-radius: 24px; border: 2px dashed rgba(var(--schatten), 0.18); background: linear-gradient(160deg, #ffffff, color-mix(in srgb, var(--green-100), white 55%)); box-shadow: var(--shadow); position: relative; }
   .shop h2 { margin-top: 0; }
-  .shop__badge { flex-shrink: 0; padding: 0.5em 1.1em; border-radius: 999px; background: var(--green-700); color: var(--white); font-weight: 600; }
+  .shop__badge { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; box-shadow: 0 4px 0 color-mix(in srgb, var(--accent), black 30%), 0 10px 18px rgba(var(--schatten), 0.25); padding: 0.5em 1.1em; border-radius: 999px; background: var(--accent); color: var(--green-900); font-weight: 600; }
   @media (max-width: 700px) { .shop { flex-direction: column; align-items: flex-start; padding: 24px; } }
   .ueber { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
   .zahlen { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .zahl { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
-  .zahl__wert { display: block; font-family: 'Fraunces', Georgia, serif; font-size: 2.6rem; color: var(--green-700); line-height: 1; margin-bottom: 8px; }
+  .zahl { position: relative; background: linear-gradient(160deg, #ffffff, color-mix(in srgb, var(--green-100), white 55%)); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+  .zahl__wert { text-shadow: 0 1px 0 color-mix(in srgb, var(--secondary), white 55%), 0 2px 0 color-mix(in srgb, var(--secondary), white 40%), 0 3px 0 color-mix(in srgb, var(--secondary), white 25%), 0 8px 14px rgba(var(--schatten), 0.18); }
+  .zahl__wert { display: block; font-family: 'Poppins', system-ui, sans-serif; font-size: 2.6rem; color: var(--green-700); line-height: 1; margin-bottom: 8px; }
   .zahl__label { color: var(--ink-soft); font-size: 0.95rem; }
 
   .kontakt { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .kontakt__liste strong { display: inline-flex; align-items: center; gap: 8px; }
+  .kontakt__liste strong :global(.icon) { color: var(--green-500); }
+  .bubble :global(.icon), .phone__fix :global(.icon) { color: var(--green-500); }
   .kontakt__liste { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
-  .kontakt__liste li { display: grid; grid-template-columns: 170px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(18, 53, 42, 0.08); }
+  .kontakt__liste li { display: grid; grid-template-columns: 200px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(var(--schatten), 0.08); }
   .karte { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); min-height: 380px; background: var(--green-100); }
   .karte__platzhalter { height: 100%; min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; }
   .karte__platzhalter :global(iframe) { width: 100%; height: 100%; min-height: 380px; border: 0; }
@@ -272,7 +303,8 @@ const zahlen = [
   @media (max-width: 860px) {
     .hero { padding: 40px 0 64px; }
     .hero__grid, .ueber, .kontakt { grid-template-columns: 1fr; }
-    .hero__visual { height: 320px; }
+    .hero__visual { height: 340px; }
+    .szene { scale: 0.74; }
     .phone { width: 160px; height: 320px; }
     .kontakt__liste li { grid-template-columns: 1fr; gap: 2px; }
   }

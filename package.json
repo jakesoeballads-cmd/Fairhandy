@@ -9,6 +9,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@fontsource/poppins": "^5.3.0",
+    "@mdi/js": "^7.4.47",
     "astro": "7.3.8"
   }
 }

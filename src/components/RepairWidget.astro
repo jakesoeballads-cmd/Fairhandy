@@ -1,10 +1,11 @@
 ---
+import Icon from './Icon.astro';
 import site from '../data/site.json';
 ---
 <div class="widget">
   <div class="widget__kopf">
     <p>Gerät wählen, Reparatur auswählen, Preis sehen und direkt einen Termin buchen.</p>
-    <a class="btn btn--ghost" href={site.bookingUrl} target="_blank" rel="noopener">In neuem Fenster öffnen ↗</a>
+    <a class="btn btn--ghost" href={site.bookingUrl} target="_blank" rel="noopener">In neuem Fenster öffnen <Icon name="mdiOpenInNew" size={18} /></a>
   </div>
   <iframe
     src={site.bookingUrl}
