@@ -4,7 +4,6 @@ import site from '../data/site.json';
 
 // Freiwillige Garantie nach § 443 BGB. Die Pflichtangaben nach § 479 BGB (Hinweis auf gesetzliche
 // Rechte, Garantiegeber, Inhalt, Dauer, Geltungsbereich, Ablauf) stehen unten. Keine Rechtsberatung.
-const stand = '23. Oktober 2026';
 
 const fristen = [
   { was: 'Reparaturen allgemein', dauer: '12 Monate auf das eingebaute Ersatzteil und die Arbeitsleistung' },
@@ -54,8 +53,6 @@ const fristen = [
 
       <h2>Garantiegeber</h2>
       <p>{site.owner}, {site.name}<br />{site.street}<br />{site.zip} {site.city}<br />Deutschland</p>
-
-      <p>Stand: {stand}</p>
     </div>
   </section>
 </Base>
