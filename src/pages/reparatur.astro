@@ -2,19 +2,48 @@
 import Icon from '../components/Icon.astro';
 import Base from '../layouts/Base.astro';
 import RepairWidget from '../components/RepairWidget.astro';
+import site from '../data/site.json';
+
+const waText = encodeURIComponent('Hallo Fair Handy, was kostet die Reparatur für mein Gerät? Modell: … Problem: …');
 ---
-<Base title="Reparatur-Preise & Online-Auftrag" description="Preise für die Reparatur Ihres Smartphones oder Tablets bei Fair Handy in Wadern-Nunkirchen sehen und direkt online einen Reparaturauftrag erstellen.">
+<Base title={site.bookingAktiv ? "Reparatur-Preise & Online-Auftrag" : "Reparatur-Preise anfragen"} description="Preise für die Reparatur Ihres Smartphones oder Tablets bei Fair Handy in Wadern-Nunkirchen sehen und direkt online einen Reparaturauftrag erstellen.">
   <section class="section">
     <div class="container">
-      <p class="eyebrow">Preise & Online-Auftrag</p>
+      <p class="eyebrow">{site.bookingAktiv ? 'Preise & Online-Auftrag' : 'Preise'}</p>
       <h1>Was kostet meine Reparatur?</h1>
-      <p class="lead" style="margin-bottom: 32px;">Wählen Sie Ihr Gerät und die Reparatur. Sie sehen sofort den Preis und können Ihren Auftrag direkt online anlegen, auch außerhalb unserer Öffnungszeiten. Der Check vor Ort ist kostenlos und unverbindlich.</p>
-      <RepairWidget />
+      {site.bookingAktiv ? (
+        <>
+          <p class="lead" style="margin-bottom: 32px;">Wählen Sie Ihr Gerät und die Reparatur. Sie sehen sofort den Preis und können Ihren Auftrag direkt online anlegen, auch außerhalb unserer Öffnungszeiten. Der Check vor Ort ist kostenlos und unverbindlich.</p>
+          <RepairWidget />
+        </>
+      ) : (
+        <>
+          <p class="lead" style="margin-bottom: 32px;">Der Check vor Ort ist kostenlos und unverbindlich.</p>
+          <div class="pause card">
+            <div class="card__icon"><Icon name="mdiTagHeart" size={30} /></div>
+            <div>
+              <h2>Unsere Preise werden gerade aktualisiert</h2>
+              <p>Die Online-Preisliste und der Online-Auftrag sind deshalb kurz nicht verfügbar. Schreiben Sie uns Ihr Gerät und das Problem per WhatsApp oder rufen Sie an, dann nennen wir Ihnen den Preis direkt.</p>
+              <div class="btn-row" style="margin-top: 20px;">
+                <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}?text=${waText}`} target="_blank" rel="noopener"><Icon name="mdiWhatsapp" size={20} /> Preis per WhatsApp anfragen</a>
+                <a class="btn btn--primary" href={`tel:${site.phoneIntl}`}><Icon name="mdiPhone" size={20} /> {site.phoneDisplay}</a>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       <div class="grid grid--3" style="margin-top: 48px;">
-        <div class="card tilt"><div class="card__icon"><Icon name="mdiShieldCheck" size={30} /></div><h3>12 Monate Garantie</h3><p>Auf alle verbauten Teile.</p></div>
+        <div class="card tilt"><div class="card__icon"><Icon name="mdiShieldCheck" size={30} /></div><h3>12 Monate Garantie</h3><p>Auf alle Reparaturen.</p></div>
         <div class="card tilt"><div class="card__icon"><Icon name="mdiRecycle" size={30} /></div><h3>Nachhaltige Teile</h3><p>Recycelte und aufbereitete Originalteile.</p></div>
         <div class="card tilt"><div class="card__icon"><Icon name="mdiSale" size={30} /></div><h3>10 % Mehrfachrabatt</h3><p>Bei mehreren Reparaturen auf einmal.</p></div>
       </div>
     </div>
   </section>
 </Base>
+
+<style>
+  .pause { display: flex; gap: 24px; align-items: flex-start; padding: 36px; }
+  .pause .card__icon { flex-shrink: 0; }
+  .pause h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+  @media (max-width: 600px) { .pause { flex-direction: column; padding: 24px; } }
+</style>

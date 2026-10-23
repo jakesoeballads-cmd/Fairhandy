@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import site from '../data/site.json';
 
 const leistungen = [
-  { icon: 'mdiCellphoneCog', titel: 'Smartphone-Reparaturen', text: 'Vom Displayschaden über Wasserschäden und Akkutausch bis zur aufwendigen Chip-Reparatur. 12 Monate Garantie auf alle verbauten Teile.' },
+  { icon: 'mdiCellphoneCog', titel: 'Smartphone-Reparaturen', text: 'Vom Displayschaden über Wasserschäden und Akkutausch bis zur aufwendigen Chip-Reparatur. 12 Monate Garantie auf alle Reparaturen.' },
   { icon: 'mdiCloudSync', titel: 'Software & Daten', text: 'Software-Updates, Datenrettung, Datenübertragung oder sichere Löschung. Kostenloser Check und unverbindlicher Kostenvoranschlag, auch für Versicherungsfälle.' },
   { icon: 'mdiSwapHorizontalCircle', titel: 'An- und Verkauf', text: 'Lohnt sich die Reparatur nicht mehr? Wir kaufen Ihr altes Gerät an. Beim Kauf eines Smartphones bei uns übertragen wir Ihre Daten.' },
   { icon: 'mdiLeaf', titel: 'Nachhaltiges Zubehör', text: 'Hüllen von Pela Case und Glided aus pflanzlichen oder recycelten Materialien, Ladekabel sowie Panzerglas und Hydrogel-Schutzfolien.' },
@@ -13,7 +13,7 @@ const leistungen = [
 const werte = [
   { titel: 'Nachhaltigkeit', text: 'Wir verwenden recycelte und aufbereitete Originalteile. Jede Reparatur spart Ressourcen und Elektroschrott.' },
   { titel: 'Persönlicher Service', text: 'Ehrliche Beratung: Wir sagen Ihnen offen, ob sich eine Reparatur lohnt oder ob ein gebrauchtes Gerät die bessere Wahl ist.' },
-  { titel: '12 Monate Garantie', text: 'Auf alle verbauten Teile. Erreichbar per Telefon, WhatsApp, E-Mail oder direkt im Laden.' },
+  { titel: '12 Monate Garantie', text: 'Auf alle Reparaturen. Erreichbar per Telefon, WhatsApp, E-Mail oder direkt im Laden.' },
 ];
 
 const zahlen = [
@@ -31,7 +31,7 @@ const zahlen = [
         <h1>Ihr Handy kaputt? Wir machen es wieder <em>fair</em> ganz.</h1>
         <p class="lead">{site.tagline}. Reparaturen, gebrauchte Smartphones und nachhaltiges Zubehör zu fairen Preisen, mit 12 Monaten Garantie.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="/reparatur/"><Icon name="mdiCalendarCheck" size={20} /> Preis & Termin online</a>
+          <a class="btn btn--primary" href="/reparatur/"><Icon name="mdiCalendarCheck" size={20} /> {site.bookingAktiv ? 'Preis & Termin online' : 'Preis anfragen'}</a>
           <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener"><Icon name="mdiWhatsapp" size={20} /> WhatsApp schreiben</a>
         </div>
         <p class="hero__open" id="offen-status">Mo – Fr 12:00 – 17:00 Uhr</p>
@@ -91,13 +91,25 @@ const zahlen = [
     <div class="container">
       <div class="online reveal">
         <div>
-          <p class="eyebrow">Online-Reparaturauftrag</p>
-          <h2>Preis sehen, Auftrag anlegen, fertig.</h2>
-          <p class="lead">Wählen Sie Ihr Gerät und die Reparatur, sehen Sie sofort den Preis und legen Sie Ihren Auftrag online an, rund um die Uhr.</p>
+          {site.bookingAktiv ? (
+            <>
+              <p class="eyebrow">Online-Reparaturauftrag</p>
+              <h2>Preis sehen, Auftrag anlegen, fertig.</h2>
+              <p class="lead">Wählen Sie Ihr Gerät und die Reparatur, sehen Sie sofort den Preis und legen Sie Ihren Auftrag online an, rund um die Uhr.</p>
+            </>
+          ) : (
+            <>
+              <p class="eyebrow">Preisanfrage</p>
+              <h2>Preis anfragen, schnell Antwort bekommen.</h2>
+              <p class="lead">Unsere Online-Preisliste wird gerade aktualisiert. Schreiben Sie uns per WhatsApp oder rufen Sie an, dann nennen wir Ihnen den Preis direkt.</p>
+            </>
+          )}
         </div>
         <div class="btn-row">
-          <a class="btn btn--primary" href="/reparatur/">Zu Preisen & Online-Auftrag</a>
-          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">Lieber per WhatsApp</a>
+          {site.bookingAktiv
+            ? <a class="btn btn--primary" href="/reparatur/">Zu Preisen & Online-Auftrag</a>
+            : <a class="btn btn--primary" href={`tel:${site.phoneIntl}`}><Icon name="mdiPhone" size={20} /> Anrufen</a>}
+          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener"><Icon name="mdiWhatsapp" size={20} /> {site.bookingAktiv ? 'Lieber per WhatsApp' : 'Per WhatsApp anfragen'}</a>
         </div>
       </div>
     </div>

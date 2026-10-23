@@ -26,6 +26,8 @@ npm run build    # erzeugt ./dist
 Die Reparaturpreise kommen direkt aus **RepairDash** (RepairWidget, Link in `site.json` → `bookingUrl`).
 Preise werden nur in RepairDash gepflegt; Aufträge von der Website landen automatisch dort.
 
+Widget vorübergehend ausschalten (z. B. während Preisanpassungen): in `site.json` `"bookingAktiv": false` setzen. Dann zeigt /reparatur/ statt des Widgets einen Hinweis mit WhatsApp- und Telefon-Knopf. Mit `true` ist das Widget wieder da.
+
 ## Deployment (Hostinger)
 
 In GitHub unter **Settings → Secrets and variables → Actions** diese Secrets anlegen
