@@ -39,7 +39,7 @@ p { margin: 0 0 1em; }
 .section--alt { background: var(--sand-100); }
 .section--dark { background: var(--green-900); color: color-mix(in srgb, var(--green-100), white 30%); }
 .section--dark h2, .section--dark h3 { color: var(--white); }
-.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; font-weight: 700; color: var(--green-500); margin-bottom: 0.6em; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; font-weight: 700; color: var(--green-700); margin-bottom: 0.6em; }
 .lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 640px; }
 
 .btn { display: inline-flex; align-items: center; gap: 0.5em; padding: 0.85em 1.5em; border-radius: 999px; font-weight: 600; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: 1rem; transition: transform 0.15s ease, background 0.15s ease; }

@@ -9,7 +9,6 @@ const waText = encodeURIComponent('Hallo Fair Handy, was kostet die Reparatur f√
 <Base title={site.bookingAktiv ? "Reparatur-Preise & Online-Auftrag" : "Reparatur-Preise anfragen"} description="Preise f√ºr die Reparatur Ihres Smartphones oder Tablets bei Fair Handy in Wadern-Nunkirchen sehen und direkt online einen Reparaturauftrag erstellen.">
   <section class="section">
     <div class="container">
-      <p class="eyebrow">{site.bookingAktiv ? 'Preise & Online-Auftrag' : 'Preise'}</p>
       <h1>Was kostet meine Reparatur?</h1>
       {site.bookingAktiv ? (
         <>
@@ -32,11 +31,11 @@ const waText = encodeURIComponent('Hallo Fair Handy, was kostet die Reparatur f√
           </div>
         </>
       )}
-      <div class="grid grid--3" style="margin-top: 48px;">
-        <div class="card tilt"><div class="card__icon"><Icon name="mdiShieldCheck" size={30} /></div><h3>12 Monate Garantie</h3><p>Auf alle Reparaturen.</p></div>
-        <div class="card tilt"><div class="card__icon"><Icon name="mdiRecycle" size={30} /></div><h3>Nachhaltige Teile</h3><p>Recycelte und aufbereitete Originalteile.</p></div>
-        <div class="card tilt"><div class="card__icon"><Icon name="mdiSale" size={30} /></div><h3>10 % Mehrfachrabatt</h3><p>Bei mehreren Reparaturen auf einmal.</p></div>
-      </div>
+      <ul class="fakten">
+        <li><Icon name="mdiShieldCheck" size={24} /><span><strong>12 Monate Garantie</strong> auf alle Reparaturen</span></li>
+        <li><Icon name="mdiRecycle" size={24} /><span><strong>Nachhaltige Teile:</strong> recycelte und aufbereitete Originalteile</span></li>
+        <li><Icon name="mdiSale" size={24} /><span><strong>10 % Rabatt</strong> bei mehreren Reparaturen auf einmal</span></li>
+      </ul>
     </div>
   </section>
 </Base>
@@ -45,5 +44,10 @@ const waText = encodeURIComponent('Hallo Fair Handy, was kostet die Reparatur f√
   .pause { display: flex; gap: 24px; align-items: flex-start; padding: 36px; }
   .pause .card__icon { flex-shrink: 0; }
   .pause h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+  /* Kurze Fakten statt drei gleicher Karten: der Hinweis oben bleibt das Wichtigste */
+  .fakten { list-style: none; padding: 0; margin: 40px 0 0; display: flex; flex-wrap: wrap; gap: 16px 36px; }
+  .fakten li { display: flex; align-items: center; gap: 10px; color: var(--ink-soft); }
+  .fakten :global(.icon) { color: var(--green-500); flex-shrink: 0; }
+  .fakten strong { color: var(--ink); }
   @media (max-width: 600px) { .pause { flex-direction: column; padding: 24px; } }
 </style>
