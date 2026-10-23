@@ -76,9 +76,6 @@ const zahlen = [
               </div>
             </div>
           </div>
-          <div class="bubble bubble--1"><Icon name="mdiBatteryCharging" size={20} /> Akku neu</div>
-          <div class="bubble bubble--2"><Icon name="mdiRecycle" size={20} /> Originalteile</div>
-          <div class="bubble bubble--3"><Icon name="mdiShieldCheck" size={20} /> 12 Mon. Garantie</div>
         </div>
       </div>
     </div>
@@ -284,10 +281,6 @@ const zahlen = [
   .phone__logo { position: absolute; left: 50%; top: 46%; width: 150px; padding: 14px 12px; translate: -50% -50%; border-radius: 18px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(6px); box-shadow: 0 12px 30px rgba(var(--schatten), 0.18); z-index: 2; animation: fix 6s ease-in-out infinite; }
   .phone__logo img { width: 100%; height: auto; }
   .phone__glanz { position: absolute; inset: -40%; background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 48%, transparent 56%); z-index: 5; animation: glanz 9s ease-in-out infinite; pointer-events: none; }
-  .bubble { display: inline-flex; align-items: center; gap: 6px; position: absolute; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(6px); padding: 10px 16px; border-radius: 999px; box-shadow: var(--shadow-hoch); font-weight: 600; font-size: 0.9rem; white-space: nowrap; animation: schweben 5s ease-in-out infinite; }
-  .bubble--1 { top: 40px; left: 0; transform: translateZ(110px); }
-  .bubble--2 { top: 190px; right: -10px; transform: translateZ(140px); animation-delay: -1.5s; }
-  .bubble--3 { bottom: 40px; left: 10px; transform: translateZ(120px); animation-delay: -3s; }
   @keyframes drehen { 0%, 100% { --dreh: -32deg; } 50% { --dreh: 12deg; } }
   @keyframes glanz { 0%, 100% { translate: -30% 0; } 50% { translate: 30% 0; } }
   @keyframes schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
@@ -295,7 +288,7 @@ const zahlen = [
   @keyframes crack { 0%, 35% { opacity: 1; } 50%, 90% { opacity: 0; } 100% { opacity: 1; } }
   @keyframes fix { 0%, 40% { opacity: 0; scale: 0.85; } 55%, 88% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 0.85; } }
   @media (prefers-reduced-motion: reduce) {
-    .phone, .bubble, .phone__crack, .phone__logo, .phone__glanz, .boden { animation: none; }
+    .phone, .phone__crack, .phone__logo, .phone__glanz, .boden { animation: none; }
     .phone__crack { opacity: 0; }
     .szene { transform: none; }
   }
@@ -324,7 +317,6 @@ const zahlen = [
   .kontakt { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
   .kontakt__liste strong { display: inline-flex; align-items: center; gap: 8px; }
   .kontakt__liste strong :global(.icon) { color: var(--green-500); }
-  .bubble :global(.icon) { color: var(--green-500); }
   .kontakt__liste { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
   .kontakt__liste li { display: grid; grid-template-columns: 200px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(var(--schatten), 0.08); }
   .karte { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); min-height: 380px; background: var(--green-100); }
