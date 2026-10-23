@@ -2,11 +2,15 @@ name: Live-Check fairhandy.eu
 on:
   push:
     branches: [dns-check]
+permissions:
+  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - run: |
+          exec > ergebnis.txt 2>&1
           getent ahosts fairhandy.eu | head -3 || true
           for u in http://fairhandy.eu/ https://fairhandy.eu/ https://www.fairhandy.eu/ https://fairhandy.eu/robots.txt; do
             echo "=== $u"
@@ -16,3 +20,8 @@ jobs:
             grep -c 'Rethink, Reuse, Recycle' body.html || true
           done
           echo | openssl s_client -connect fairhandy.eu:443 -servername fairhandy.eu 2>/dev/null | openssl x509 -noout -subject -issuer -dates || echo "kein Zertifikat"
+      - if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ergebnis.txt && git commit -m "Ergebnis" && git push
