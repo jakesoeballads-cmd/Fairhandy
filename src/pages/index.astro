@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import site from '../data/site.json';
 
 const leistungen = [
-  { icon: 'mdiCellphoneCog', titel: 'Smartphone-Reparaturen', text: 'Vom Displayschaden über Wasserschäden und Akkutausch bis zur aufwendigen Chip-Reparatur. 12 Monate Garantie auf alle Reparaturen.' },
+  { icon: 'mdiCellphoneCog', titel: 'Smartphone-Reparaturen', text: 'Vom Displayschaden über Wasserschäden und Akkutausch bis zur aufwendigen Chip-Reparatur. Bis zu 12 Monate Garantie.' },
   { icon: 'mdiCloudSync', titel: 'Software & Daten', text: 'Software-Updates, Datenrettung, Datenübertragung oder sichere Löschung. Kostenloser Check und unverbindlicher Kostenvoranschlag, auch für Versicherungsfälle.' },
   { icon: 'mdiSwapHorizontalCircle', titel: 'An- und Verkauf', text: 'Lohnt sich die Reparatur nicht mehr? Wir kaufen Ihr altes Gerät an. Beim Kauf eines Smartphones bei uns übertragen wir Ihre Daten.' },
   { icon: 'mdiLeaf', titel: 'Nachhaltiges Zubehör', text: 'Hüllen von Pela Case und Glided aus pflanzlichen oder recycelten Materialien, Ladekabel sowie Panzerglas und Hydrogel-Schutzfolien.' },
@@ -13,14 +13,14 @@ const leistungen = [
 const werte = [
   { titel: 'Nachhaltigkeit', text: 'Wir verwenden recycelte und aufbereitete Originalteile. Jede Reparatur spart Ressourcen und Elektroschrott.' },
   { titel: 'Persönlicher Service', text: 'Ehrliche Beratung: Wir sagen Ihnen offen, ob sich eine Reparatur lohnt oder ob ein gebrauchtes Gerät die bessere Wahl ist.' },
-  { titel: '12 Monate Garantie', text: 'Auf alle Reparaturen. Erreichbar per Telefon, WhatsApp, E-Mail oder direkt im Laden.' },
+  { titel: 'Bis zu 12 Monate Garantie', text: 'Auf unsere Reparaturen, Details in den Garantiebedingungen. Erreichbar per Telefon, WhatsApp, E-Mail oder direkt im Laden.' },
 ];
 
 const kanten = [-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10];
 
 const zahlen = [
   { wert: 20, suffix: '+', label: 'Jahre Erfahrung' },
-  { wert: 12, suffix: '', label: 'Monate Garantie' },
+  { wert: 12, suffix: '', label: 'Monate Garantie (bis zu)' },
 ];
 ---
 <Base>
@@ -29,7 +29,7 @@ const zahlen = [
       <div class="hero__text">
         <p class="eyebrow">Handyreparatur in {site.city}</p>
         <h1>Ihr Handy kaputt? Wir machen es wieder <em>fair</em> ganz.</h1>
-        <p class="lead">{site.tagline}. Reparaturen, gebrauchte Smartphones und nachhaltiges Zubehör zu fairen Preisen, mit 12 Monaten Garantie.</p>
+        <p class="lead">{site.tagline}. Reparaturen, gebrauchte Smartphones und nachhaltiges Zubehör zu fairen Preisen, mit bis zu 12 Monaten Garantie.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="/reparatur/"><Icon name="mdiCalendarCheck" size={20} /> {site.bookingAktiv ? 'Preis & Termin online' : 'Preis anfragen'}</a>
           <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener"><Icon name="mdiWhatsapp" size={20} /> WhatsApp schreiben</a>
