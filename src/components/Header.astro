@@ -4,7 +4,7 @@ import Icon from './Icon.astro';
 
 const links = [
   { href: '/#leistungen', label: 'Leistungen' },
-  { href: '/reparatur/', label: 'Preise & Termin' },
+  { href: '/reparatur/', label: site.bookingAktiv ? 'Preise & Termin' : 'Preise' },
   { href: '/#ueber-uns', label: 'Über uns' },
   { href: '/#kontakt', label: 'Kontakt' },
 ];

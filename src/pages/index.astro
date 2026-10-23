@@ -31,7 +31,7 @@ const zahlen = [
         <h1>Ihr Handy kaputt? Wir machen es wieder <em>fair</em> ganz.</h1>
         <p class="lead">{site.tagline}. Reparaturen, gebrauchte Smartphones und nachhaltiges Zubehör zu fairen Preisen, mit 12 Monaten Garantie.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="/reparatur/"><Icon name="mdiCalendarCheck" size={20} /> Preis & Termin online</a>
+          <a class="btn btn--primary" href="/reparatur/"><Icon name="mdiCalendarCheck" size={20} /> {site.bookingAktiv ? 'Preis & Termin online' : 'Preis anfragen'}</a>
           <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener"><Icon name="mdiWhatsapp" size={20} /> WhatsApp schreiben</a>
         </div>
         <p class="hero__open" id="offen-status">Mo – Fr 12:00 – 17:00 Uhr</p>
@@ -91,13 +91,25 @@ const zahlen = [
     <div class="container">
       <div class="online reveal">
         <div>
-          <p class="eyebrow">Online-Reparaturauftrag</p>
-          <h2>Preis sehen, Auftrag anlegen, fertig.</h2>
-          <p class="lead">Wählen Sie Ihr Gerät und die Reparatur, sehen Sie sofort den Preis und legen Sie Ihren Auftrag online an, rund um die Uhr.</p>
+          {site.bookingAktiv ? (
+            <>
+              <p class="eyebrow">Online-Reparaturauftrag</p>
+              <h2>Preis sehen, Auftrag anlegen, fertig.</h2>
+              <p class="lead">Wählen Sie Ihr Gerät und die Reparatur, sehen Sie sofort den Preis und legen Sie Ihren Auftrag online an, rund um die Uhr.</p>
+            </>
+          ) : (
+            <>
+              <p class="eyebrow">Preisanfrage</p>
+              <h2>Preis anfragen, schnell Antwort bekommen.</h2>
+              <p class="lead">Unsere Online-Preisliste wird gerade aktualisiert. Schreiben Sie uns per WhatsApp oder rufen Sie an, dann nennen wir Ihnen den Preis direkt.</p>
+            </>
+          )}
         </div>
         <div class="btn-row">
-          <a class="btn btn--primary" href="/reparatur/">Zu Preisen & Online-Auftrag</a>
-          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">Lieber per WhatsApp</a>
+          {site.bookingAktiv
+            ? <a class="btn btn--primary" href="/reparatur/">Zu Preisen & Online-Auftrag</a>
+            : <a class="btn btn--primary" href={`tel:${site.phoneIntl}`}><Icon name="mdiPhone" size={20} /> Anrufen</a>}
+          <a class="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener"><Icon name="mdiWhatsapp" size={20} /> {site.bookingAktiv ? 'Lieber per WhatsApp' : 'Per WhatsApp anfragen'}</a>
         </div>
       </div>
     </div>
