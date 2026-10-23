@@ -16,6 +16,8 @@ const werte = [
   { titel: '12 Monate Garantie', text: 'Auf alle Reparaturen. Erreichbar per Telefon, WhatsApp, E-Mail oder direkt im Laden.' },
 ];
 
+const kanten = [-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10];
+
 const zahlen = [
   { wert: 20, suffix: '+', label: 'Jahre Erfahrung' },
   { wert: 614, suffix: '+', label: 'iPhones verkauft über eBay seit 2018' },
@@ -41,20 +43,39 @@ const zahlen = [
           <div class="glow"></div>
           <div class="boden"></div>
           <div class="phone">
-            <div class="phone__lage phone__lage--3"></div>
-            <div class="phone__lage phone__lage--2"></div>
-            <div class="phone__lage phone__lage--1"></div>
+            {kanten.map((z) => <div class="phone__kante" style={`--z:${z}px`}></div>)}
+            {kanten.filter((z) => Math.abs(z) <= 4).map((z) => (
+              <>
+                <span class="knopf knopf--aktion" style={`--z:${z}px`}></span>
+                <span class="knopf knopf--laut1" style={`--z:${z}px`}></span>
+                <span class="knopf knopf--laut2" style={`--z:${z}px`}></span>
+                <span class="knopf knopf--power" style={`--z:${z}px`}></span>
+              </>
+            ))}
+            <div class="phone__rueck"><span class="kamera"></span></div>
             <div class="phone__front">
               <div class="phone__screen">
-                <div class="phone__crack"></div>
-                <div class="phone__fix"><Icon name="mdiCheckCircle" size={20} /> Repariert</div>
+                <div class="phone__status">
+                  <span>12:00</span>
+                  <span class="phone__icons"><Icon name="mdiSignalCellular3" size={13} /><Icon name="mdiWifi" size={13} /><Icon name="mdiBattery" size={15} /></span>
+                </div>
+                <div class="phone__insel"></div>
+                <svg class="phone__crack" viewBox="0 0 182 392" preserveAspectRatio="none" aria-hidden="true">
+                  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <g class="riss-schatten" stroke="rgba(20,30,28,0.35)" stroke-width="2.2">
+                      <path d="M118 150 L150 96 L182 70 M118 150 L170 168 L182 176 M118 150 L136 226 L150 300 L162 392 M118 150 L84 220 L40 262 L0 286 M118 150 L66 128 L18 92 L0 84 M118 150 L104 70 L96 0 M84 220 L92 300 L80 392 M66 128 L60 180 M150 96 L158 40 M136 226 L178 250" />
+                    </g>
+                    <g stroke="rgba(255,255,255,0.95)" stroke-width="1">
+                      <path d="M118 150 L150 96 L182 70 M118 150 L170 168 L182 176 M118 150 L136 226 L150 300 L162 392 M118 150 L84 220 L40 262 L0 286 M118 150 L66 128 L18 92 L0 84 M118 150 L104 70 L96 0 M84 220 L92 300 L80 392 M66 128 L60 180 M150 96 L158 40 M136 226 L178 250" />
+                      <path d="M118 150 L126 132 M118 150 L134 154 M118 150 L112 168 M118 150 L102 146 M126 132 L134 154 L112 168 L102 146 Z" stroke-width="0.7" opacity="0.7" />
+                    </g>
+                  </g>
+                </svg>
+                <div class="phone__logo"><img src="/img/logo.png" alt="" width="640" height="286" /></div>
                 <div class="phone__glanz"></div>
               </div>
             </div>
           </div>
-          <div class="bubble bubble--1"><Icon name="mdiBatteryCharging" size={20} /> Akku neu</div>
-          <div class="bubble bubble--2"><Icon name="mdiRecycle" size={20} /> Originalteile</div>
-          <div class="bubble bubble--3"><Icon name="mdiShieldCheck" size={20} /> 12 Mon. Garantie</div>
         </div>
       </div>
     </div>
@@ -249,33 +270,37 @@ const zahlen = [
   .boden { position: absolute; left: 50%; bottom: 6px; width: 220px; height: 34px; margin-left: -110px; border-radius: 50%; background: radial-gradient(ellipse, rgba(var(--schatten), 0.35), transparent 70%); filter: blur(6px); animation: boden 6s ease-in-out infinite; }
 
   @property --dreh { syntax: '<angle>'; inherits: true; initial-value: -22deg; }
-  .phone { position: absolute; left: 50%; top: 50%; width: 210px; height: 420px; margin: -210px 0 0 -105px; transform-style: preserve-3d; transform: rotateX(10deg) rotateY(var(--dreh)) rotateZ(-5deg); animation: drehen 9s ease-in-out infinite, schweben 6s ease-in-out infinite; }
-  .phone__front, .phone__lage { position: absolute; inset: 0; border-radius: 36px; }
-  .phone__front { background: linear-gradient(145deg, color-mix(in srgb, var(--green-900), white 10%), var(--green-900)); padding: 12px; transform: translateZ(9px); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.08); }
-  .phone__lage { background: color-mix(in srgb, var(--green-900), black 30%); }
-  .phone__lage--1 { transform: translateZ(4px); }
-  .phone__lage--2 { transform: translateZ(-1px); background: color-mix(in srgb, var(--green-900), black 42%); }
-  .phone__lage--3 { transform: translateZ(-6px); background: color-mix(in srgb, var(--green-900), black 55%); }
-  .phone__screen { position: relative; height: 100%; border-radius: 26px; overflow: hidden; background: linear-gradient(160deg, var(--secondary), var(--green-700)); }
-  .phone__glanz { position: absolute; inset: -40%; background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.28) 48%, transparent 56%); animation: glanz 9s ease-in-out infinite; }
-  .phone__crack { position: absolute; inset: 0; background:
-    linear-gradient(115deg, transparent 48%, rgba(255,255,255,0.7) 49%, transparent 50%),
-    linear-gradient(35deg, transparent 58%, rgba(255,255,255,0.55) 59%, transparent 60%),
-    linear-gradient(160deg, transparent 38%, rgba(255,255,255,0.5) 39%, transparent 40%);
-    animation: crack 6s ease-in-out infinite; }
-  .phone__fix { display: inline-flex; align-items: center; gap: 6px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--white); color: var(--green-700); font-weight: 700; padding: 10px 18px; border-radius: 999px; white-space: nowrap; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25); animation: fix 6s ease-in-out infinite; }
-  .bubble { display: inline-flex; align-items: center; gap: 6px; position: absolute; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(6px); padding: 10px 16px; border-radius: 999px; box-shadow: var(--shadow-hoch); font-weight: 600; font-size: 0.9rem; white-space: nowrap; animation: schweben 5s ease-in-out infinite; }
-  .bubble--1 { top: 40px; left: 0; transform: translateZ(110px); }
-  .bubble--2 { top: 190px; right: -10px; transform: translateZ(140px); animation-delay: -1.5s; }
-  .bubble--3 { bottom: 40px; left: 10px; transform: translateZ(120px); animation-delay: -3s; }
-  @keyframes drehen { 0%, 100% { --dreh: -24deg; } 50% { --dreh: 8deg; } }
+  .phone { position: absolute; left: 50%; top: 50%; width: 200px; height: 410px; margin: -205px 0 0 -100px; transform-style: preserve-3d; transform: rotateX(10deg) rotateY(var(--dreh)) rotateZ(-5deg); animation: drehen 9s ease-in-out infinite, schweben 6s ease-in-out infinite; }
+  .phone__kante, .phone__rueck, .phone__front { position: absolute; inset: 0; border-radius: 40px; }
+  /* Titanrahmen: viele Schichten hintereinander ergeben eine massive Kante */
+  .phone__kante { transform: translateZ(var(--z)); background: linear-gradient(90deg, #2b3034 0%, #8d969c 12%, #3d4347 30%, #b9c1c6 55%, #474e53 78%, #a3abb0 92%, #2b3034 100%); }
+  .phone__rueck { transform: translateZ(-11px) rotateY(180deg); background: linear-gradient(150deg, #3b4246, #23292c); backface-visibility: hidden; }
+  .kamera { position: absolute; top: 16px; left: 16px; width: 70px; height: 70px; border-radius: 20px; background: #1a1f22; box-shadow: inset 0 0 0 2px #4a5156; }
+  .knopf { position: absolute; width: 4px; border-radius: 2px; background: linear-gradient(90deg, #6f777c, #c3cacf, #5b6266); transform: translateZ(var(--z)); }
+  .knopf--aktion { left: -3px; top: 86px; height: 26px; }
+  .knopf--laut1 { left: -3px; top: 128px; height: 44px; }
+  .knopf--laut2 { left: -3px; top: 182px; height: 44px; }
+  .knopf--power { right: -3px; top: 140px; height: 70px; }
+  .phone__front { transform: translateZ(11px); background: #07090a; padding: 9px; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.18), inset 0 0 0 3px #1b1f21; }
+  .phone__screen { position: relative; height: 100%; border-radius: 31px; overflow: hidden; background:
+    radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--secondary), transparent 35%), transparent 45%),
+    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--green-500), transparent 55%), transparent 50%),
+    linear-gradient(170deg, #ffffff, var(--green-100) 55%, color-mix(in srgb, var(--secondary), white 40%)); }
+  .phone__status { position: absolute; top: 10px; left: 20px; right: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; color: var(--green-900); z-index: 3; }
+  .phone__icons { display: inline-flex; gap: 3px; align-items: center; }
+  .phone__insel { position: absolute; top: 9px; left: 50%; width: 56px; height: 18px; margin-left: -28px; border-radius: 12px; background: #000; z-index: 4; }
+  .phone__crack { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; animation: crack 6s ease-in-out infinite; }
+  .phone__logo { position: absolute; left: 50%; top: 46%; width: 150px; padding: 14px 12px; translate: -50% -50%; border-radius: 18px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(6px); box-shadow: 0 12px 30px rgba(var(--schatten), 0.18); z-index: 2; animation: fix 6s ease-in-out infinite; }
+  .phone__logo img { width: 100%; height: auto; }
+  .phone__glanz { position: absolute; inset: -40%; background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 48%, transparent 56%); z-index: 5; animation: glanz 9s ease-in-out infinite; pointer-events: none; }
+  @keyframes drehen { 0%, 100% { --dreh: -32deg; } 50% { --dreh: 12deg; } }
   @keyframes glanz { 0%, 100% { translate: -30% 0; } 50% { translate: 30% 0; } }
   @keyframes schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
   @keyframes boden { 0%, 100% { scale: 1; opacity: 1; } 50% { scale: 0.85; opacity: 0.7; } }
   @keyframes crack { 0%, 35% { opacity: 1; } 50%, 90% { opacity: 0; } 100% { opacity: 1; } }
-  @keyframes fix { 0%, 40% { opacity: 0; scale: 0.8; } 55%, 88% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 0.8; } }
+  @keyframes fix { 0%, 40% { opacity: 0; scale: 0.85; } 55%, 88% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 0.85; } }
   @media (prefers-reduced-motion: reduce) {
-    .phone, .bubble, .phone__crack, .phone__fix, .phone__glanz, .boden { animation: none; }
+    .phone, .phone__crack, .phone__logo, .phone__glanz, .boden { animation: none; }
     .phone__crack { opacity: 0; }
     .szene { transform: none; }
   }
@@ -304,7 +329,6 @@ const zahlen = [
   .kontakt { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
   .kontakt__liste strong { display: inline-flex; align-items: center; gap: 8px; }
   .kontakt__liste strong :global(.icon) { color: var(--green-500); }
-  .bubble :global(.icon), .phone__fix :global(.icon) { color: var(--green-500); }
   .kontakt__liste { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
   .kontakt__liste li { display: grid; grid-template-columns: 200px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(var(--schatten), 0.08); }
   .karte { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); min-height: 380px; background: var(--green-100); }
@@ -317,7 +341,6 @@ const zahlen = [
     .hero__grid, .ueber, .kontakt { grid-template-columns: 1fr; }
     .hero__visual { height: 340px; }
     .szene { scale: 0.74; }
-    .phone { width: 160px; height: 320px; }
     .kontakt__liste li { grid-template-columns: 1fr; gap: 2px; }
   }
 </style>
