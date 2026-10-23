@@ -1,0 +1,33 @@
+145.79.14.236   STREAM fairhandy.eu
+145.79.14.236   DGRAM  
+145.79.14.236   RAW    
+=== http://fairhandy.eu/
+HTTP/1.1 301 Moved Permanently
+Connection: Keep-Alive
+Keep-Alive: timeout=5, max=100
+Content-Type: text/html
+Content-Length: 795
+Date: Fri, 23 Oct 2026 00:10:24 GMT
+Server: LiteSpeed
+Location: https://fairhandy.eu/
+platform: hostinger
+panel: hpanel
+
+0
+0
+=== https://fairhandy.eu/
+curl: (35) OpenSSL/3.0.13: error:0A000438:SSL routines::tlsv1 alert internal error
+0
+0
+=== https://www.fairhandy.eu/
+curl: (35) OpenSSL/3.0.13: error:0A000438:SSL routines::tlsv1 alert internal error
+0
+0
+=== https://fairhandy.eu/robots.txt
+curl: (35) OpenSSL/3.0.13: error:0A000438:SSL routines::tlsv1 alert internal error
+0
+0
+Could not read certificate from <stdin>
+40B76B71E57F0000:error:1608010C:STORE routines:ossl_store_handle_load_result:unsupported:../crypto/store/store_result.c:151:
+Unable to load certificate
+kein Zertifikat
