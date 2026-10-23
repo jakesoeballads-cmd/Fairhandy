@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
     </div>
     <div>
       <p class="footer__title">Kontakt</p>
-      <p>
+      <p class="footer__kontakt">
         <a href={`tel:${site.phoneIntl}`}>{site.phoneDisplay}</a><br />
         <a href={`mailto:${site.email}`}>{site.email}</a>
       </p>
@@ -42,6 +42,8 @@ const year = new Date().getFullYear();
   .footer__brand { font-family: 'Poppins', system-ui, sans-serif; font-size: 1.4rem; color: var(--white); margin-bottom: 0.3em; }
   .footer__title { font-weight: 700; color: var(--white); margin-bottom: 0.4em; }
   .footer__hours { margin-bottom: 0.6em; }
-  .footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.12); font-size: 0.9rem; }
+  .footer__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.12); font-size: 0.9rem; }
   .footer__bottom nav { display: flex; gap: 20px; }
+  /* Tippfläche mind. 44 px hoch, damit die Links auf dem Handy gut treffbar sind */
+  .footer__bottom nav a, .footer__kontakt a { display: inline-flex; align-items: center; min-height: 44px; }
 </style>

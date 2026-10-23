@@ -20,8 +20,6 @@ const kanten = [-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10];
 
 const zahlen = [
   { wert: 20, suffix: '+', label: 'Jahre Erfahrung' },
-  { wert: 614, suffix: '+', label: 'iPhones verkauft über eBay seit 2018' },
-  { wert: 100, suffix: ' %', label: 'Kundenzufriedenheit auf eBay' },
   { wert: 12, suffix: '', label: 'Monate Garantie' },
 ];
 ---
@@ -83,12 +81,20 @@ const zahlen = [
 
   <section class="section" id="leistungen">
     <div class="container">
-      <p class="eyebrow">Leistungen</p>
       <h2>Was bieten wir an?</h2>
-      <div class="grid grid--4" style="margin-top: 32px;">
-        {leistungen.map((l) => (
-          <article class="card tilt reveal">
-            <div class="card__icon"><Icon name={l.icon as any} size={30} /></div>
+      <div class="leistungen">
+        {leistungen.map((l, i) => i === 0 ? (
+          <article class="haupt reveal">
+            <div class="haupt__icon"><Icon name={l.icon as any} size={40} /></div>
+            <div>
+              <h3>{l.titel}</h3>
+              <p>{l.text}</p>
+              <a class="btn btn--primary" href="/reparatur/">{site.bookingAktiv ? 'Preis & Termin online' : 'Reparaturpreis anfragen'}</a>
+            </div>
+          </article>
+        ) : (
+          <article class="neben reveal">
+            <Icon name={l.icon as any} size={26} class="neben__icon" />
             <h3>{l.titel}</h3>
             <p>{l.text}</p>
           </article>
@@ -114,13 +120,11 @@ const zahlen = [
         <div>
           {site.bookingAktiv ? (
             <>
-              <p class="eyebrow">Online-Reparaturauftrag</p>
               <h2>Preis sehen, Auftrag anlegen, fertig.</h2>
               <p class="lead">Wählen Sie Ihr Gerät und die Reparatur, sehen Sie sofort den Preis und legen Sie Ihren Auftrag online an, rund um die Uhr.</p>
             </>
           ) : (
             <>
-              <p class="eyebrow">Preisanfrage</p>
               <h2>Preis anfragen, schnell Antwort bekommen.</h2>
               <p class="lead">Unsere Online-Preisliste wird gerade aktualisiert. Schreiben Sie uns per WhatsApp oder rufen Sie an, dann nennen wir Ihnen den Preis direkt.</p>
             </>
@@ -142,9 +146,8 @@ const zahlen = [
       <h2>Fair für Sie. Fair für die Umwelt.</h2>
       <p class="lead" style="max-width: 680px;">Unser Fokus auf Nachhaltigkeit spiegelt sich in unserer gesamten Geschäftsidee wider.</p>
       <div class="grid grid--3" style="margin-top: 32px;">
-        {werte.map((w, i) => (
+        {werte.map((w) => (
           <article class="wert reveal">
-            <span class="wert__nr">0{i + 1}</span>
             <h3>{w.titel}</h3>
             <p>{w.text}</p>
           </article>
@@ -156,7 +159,6 @@ const zahlen = [
   <section class="section section--alt" id="ueber-uns">
     <div class="container ueber">
       <div class="reveal">
-        <p class="eyebrow">Wer sind wir?</p>
         <h2>Über 20 Jahre Erfahrung in der Elektronik</h2>
         <p>Sunardi ist bereits seit 1998 Informationselektroniker. In Indonesien führte er einen Smartphone-Laden mit mehreren Mitarbeitern. 2015 zog er in die Niederlande und gründete 2016 bei Eindhoven das Unternehmen „Fair Cellution“, das vor allem im B2B-Bereich tätig war.</p>
         <p>Als seine Partnerin Florence in ihre Heimat zurückkehren wollte, konzentrierte er sich auf den Online-Verkauf von Smartphones über eBay. Im Dezember 2024 eröffneten die beiden schließlich Fair Handy in Wadern-Nunkirchen, mit dem Ziel, Reparaturen fair, ehrlich und nachhaltig anzubieten.</p>
@@ -172,23 +174,9 @@ const zahlen = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="shop tilt reveal">
-        <div>
-          <p class="eyebrow">Online-Shop</p>
-          <h2>Gebrauchte Smartphones & Ersatzteile</h2>
-          <p class="lead">Besuchen Sie Fair Handy und entdecken Sie unsere Auswahl an gebrauchten Smartphones und Reparaturteilen. Unser Online-Shop ist bald online!</p>
-        </div>
-        <span class="shop__badge"><Icon name="mdiStorefront" size={20} /> Bald online</span>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="kontakt">
     <div class="container kontakt">
       <div class="reveal">
-        <p class="eyebrow">Kontakt</p>
         <h2>Besuchen Sie uns</h2>
         <p class="lead">Kommen Sie einfach vorbei oder schreiben Sie uns. Der Check ist kostenlos und unverbindlich.</p>
         <ul class="kontakt__liste">
@@ -257,7 +245,7 @@ const zahlen = [
 <style>
   .hero { padding: 72px 0 96px; background: radial-gradient(circle at 85% 20%, var(--green-100), transparent 55%); overflow: hidden; }
   .hero__grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
-  .hero h1 em { font-style: normal; background: linear-gradient(120deg, var(--green-500), var(--secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero h1 em { font-style: normal; background: linear-gradient(120deg, var(--green-700), var(--green-500)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero .lead { margin-bottom: 28px; }
   .hero__open { margin-top: 20px; font-size: 0.95rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
   .hero__open::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-soft); }
@@ -305,6 +293,20 @@ const zahlen = [
     .szene { transform: none; }
   }
 
+  /* Reparatur ist das Kerngeschäft: eigene, große Fläche; die übrigen Leistungen ordnen sich darunter ein */
+  .leistungen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 40px; margin-top: 32px; }
+  .haupt { grid-column: 1 / -1; display: flex; gap: 28px; align-items: flex-start; padding: 36px; border-radius: var(--radius); background: var(--green-100); }
+  .haupt h3 { font-size: 1.6rem; }
+  .haupt p { max-width: 620px; margin-bottom: 24px; }
+  .haupt__icon { flex-shrink: 0; width: 72px; height: 72px; display: grid; place-items: center; border-radius: 16px; background: var(--green-700); color: var(--white); }
+  .neben { padding-top: 20px; border-top: 2px solid rgba(var(--schatten), 0.12); }
+  .neben :global(.neben__icon) { color: var(--green-500); margin-bottom: 10px; }
+  .neben p { color: var(--ink-soft); margin: 0; }
+  @media (max-width: 860px) {
+    .leistungen { grid-template-columns: 1fr; gap: 28px; }
+    .haupt { flex-direction: column; padding: 28px 24px; }
+  }
+
   .online { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
   .online .lead { margin-bottom: 0; }
   @media (max-width: 860px) { .online { grid-template-columns: 1fr; } }
@@ -312,17 +314,11 @@ const zahlen = [
   .rabatt p { margin: 0; }
 
   .wert { padding-top: 20px; border-top: 3px solid var(--green-500); }
-  .wert__nr { font-family: 'Poppins', system-ui, sans-serif; font-size: 2.4rem; color: var(--green-100); -webkit-text-stroke: 1px var(--green-500); display: block; margin-bottom: 8px; }
   .wert p { color: var(--ink-soft); }
 
-  .shop { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 36px; border-radius: 24px; border: 2px dashed rgba(var(--schatten), 0.18); background: linear-gradient(160deg, #ffffff, color-mix(in srgb, var(--green-100), white 55%)); box-shadow: var(--shadow); position: relative; }
-  .shop h2 { margin-top: 0; }
-  .shop__badge { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; box-shadow: 0 4px 0 color-mix(in srgb, var(--accent), black 30%), 0 10px 18px rgba(var(--schatten), 0.25); padding: 0.5em 1.1em; border-radius: 999px; background: var(--accent); color: var(--green-900); font-weight: 600; }
-  @media (max-width: 700px) { .shop { flex-direction: column; align-items: flex-start; padding: 24px; } }
   .ueber { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
   .zahlen { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .zahl { position: relative; background: linear-gradient(160deg, #ffffff, color-mix(in srgb, var(--green-100), white 55%)); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
-  .zahl__wert { text-shadow: 0 1px 0 color-mix(in srgb, var(--secondary), white 55%), 0 2px 0 color-mix(in srgb, var(--secondary), white 40%), 0 3px 0 color-mix(in srgb, var(--secondary), white 25%), 0 8px 14px rgba(var(--schatten), 0.18); }
   .zahl__wert { display: block; font-family: 'Poppins', system-ui, sans-serif; font-size: 2.6rem; color: var(--green-700); line-height: 1; margin-bottom: 8px; }
   .zahl__label { color: var(--ink-soft); font-size: 0.95rem; }
 
