@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+
+// Freiwillige Garantie nach § 443 BGB. Die Pflichtangaben nach § 479 BGB (Hinweis auf gesetzliche
+// Rechte, Garantiegeber, Inhalt, Dauer, Geltungsbereich, Ablauf) stehen unten. Keine Rechtsberatung.
+const stand = '23. Oktober 2026';
+
+const fristen = [
+  { was: 'Reparaturen allgemein', dauer: '12 Monate auf das eingebaute Ersatzteil und die Arbeitsleistung' },
+  { was: 'Akkutausch', dauer: '6 Monate auf den Akku und die Arbeitsleistung' },
+  { was: 'Displaytausch', dauer: '3 Monate auf das Display und die Arbeitsleistung. Vom 4. bis zum 12. Monat ist die Arbeitsleistung kostenlos, Sie zahlen nur das neue Display.' },
+];
+---
+<Base title="Garantiebedingungen" description="Garantiebedingungen von Fair Handy in Wadern-Nunkirchen: Garantiezeiten, was abgedeckt ist und wie Sie einen Garantiefall melden.">
+  <section class="section">
+    <div class="container prose">
+      <h1>Garantiebedingungen</h1>
+      <p>Auf unsere Reparaturen geben wir eine freiwillige Garantie. Hier steht, wie lange sie gilt, was sie abdeckt und wie Sie einen Garantiefall melden.</p>
+
+      <h2>Garantiezeiten</h2>
+      <ul>
+        {fristen.map((f) => <li><strong>{f.was}:</strong> {f.dauer}</li>)}
+      </ul>
+      <p>Die Garantie beginnt mit dem Tag, an dem Sie das reparierte Gerät abholen. Als Nachweis gilt Ihre Rechnung oder Ihr Reparaturbeleg.</p>
+
+      <h2>Was die Garantie abdeckt</h2>
+      <p>Die Garantie gilt für die Teile, die wir bei der Reparatur eingebaut haben, und für unsere Arbeit daran. Tritt in der Garantiezeit ein Fehler auf, der auf das Ersatzteil oder unsere Arbeit zurückgeht, reparieren wir das kostenlos oder tauschen das Teil aus.</p>
+      <p>Beim Display heißt das zum Beispiel: Fällt der Touch aus oder zeigt das Bild Fehler, ohne dass das Gerät gestürzt ist oder Druck abbekommen hat, ist das ein Garantiefall. Ein gesprungenes oder gebrochenes Display ist es nicht.</p>
+
+      <h2>Was nicht abgedeckt ist</h2>
+      <ul>
+        <li>Schäden durch Sturz, Stoß, Druck oder Bruch, auch Glasbruch.</li>
+        <li>Schäden durch Wasser, Feuchtigkeit oder andere Flüssigkeiten.</li>
+        <li>Geräte, die nach unserer Reparatur von Ihnen oder Dritten geöffnet oder repariert wurden.</li>
+        <li>Fehler der Software oder des Betriebssystems, auch nach Updates.</li>
+        <li>Teile und Funktionen, die wir nicht repariert haben.</li>
+        <li>Beim Akku: die normale Abnahme der Kapazität durch Gebrauch. Das ist Verschleiß und kein Defekt.</li>
+      </ul>
+
+      <h2>So melden Sie einen Garantiefall</h2>
+      <ol>
+        <li>Melden Sie sich per WhatsApp oder Telefon unter <a href={`tel:${site.phoneIntl}`}>{site.phoneDisplay}</a> oder per E-Mail an <a href={`mailto:${site.email}`}>{site.email}</a>.</li>
+        <li>Bringen Sie das Gerät und Ihre Rechnung in unseren Laden: {site.street}, {site.zip} {site.city}.</li>
+        <li>Wir prüfen das Gerät. Liegt ein Garantiefall vor, beheben wir den Fehler kostenlos. Liegt keiner vor, sagen wir Ihnen vorher, was eine Reparatur kostet.</li>
+      </ol>
+      <p>Die Garantie gilt für Geräte, die Sie bei uns im Laden abgeben.</p>
+
+      <h2>Ihre Daten</h2>
+      <p>Bitte sichern Sie Ihre Daten, bevor Sie uns ein Gerät zur Reparatur oder für einen Garantiefall geben. Bei einer Reparatur können Daten verloren gehen. Für verlorene Daten übernehmen wir keine Haftung, außer bei Vorsatz oder grober Fahrlässigkeit.</p>
+
+      <h2>Ihre gesetzlichen Rechte</h2>
+      <p>Diese Garantie gilt zusätzlich zu Ihren gesetzlichen Mängelrechten (Gewährleistung). Diese Rechte bestehen unabhängig von der Garantie, sind für Sie kostenlos und werden durch die Garantie nicht eingeschränkt.</p>
+
+      <h2>Garantiegeber</h2>
+      <p>{site.owner}, {site.name}<br />{site.street}<br />{site.zip} {site.city}<br />Deutschland</p>
+
+      <p>Stand: {stand}</p>
+    </div>
+  </section>
+</Base>
