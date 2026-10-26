@@ -106,7 +106,7 @@ const zahlen = [
   <section class="section section--dark">
     <div class="container rabatt reveal">
       <div>
-        <p class="eyebrow" style="color: var(--accent);">Rabattaktion</p>
+        <p class="eyebrow">Rabattaktion</p>
         <h2>10 % Rabatt bei mehreren Reparaturen</h2>
         <p>Buchen Sie mehrere Reparaturen auf einmal und sparen Sie 10 % auf den Gesamtpreis.</p>
       </div>
@@ -243,9 +243,9 @@ const zahlen = [
 </script>
 
 <style>
-  .hero { padding: 72px 0 96px; background: radial-gradient(circle at 85% 20%, var(--green-100), transparent 55%); overflow: hidden; }
+  .hero { padding: 72px 0 96px; background: radial-gradient(circle at 85% 20%, var(--mint-zart), transparent 55%); overflow: hidden; }
   .hero__grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
-  .hero h1 em { font-style: normal; background: linear-gradient(120deg, var(--green-700), var(--green-500)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero h1 em { font-style: normal; background: linear-gradient(120deg, var(--mint-dunkel), var(--mint)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero .lead { margin-bottom: 28px; }
   .hero__open { margin-top: 20px; font-size: 0.95rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
   .hero__open::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-soft); }
@@ -254,7 +254,7 @@ const zahlen = [
 
   .hero__visual { position: relative; height: 460px; perspective: 1100px; }
   .szene { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(var(--sx, 0deg)) rotateY(var(--sy, 0deg)); transition: transform 0.25s ease-out; }
-  .glow { position: absolute; left: 50%; top: 50%; width: 360px; height: 360px; margin: -180px 0 0 -180px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--secondary), transparent 55%), transparent 65%); transform: translateZ(-120px); filter: blur(10px); }
+  .glow { position: absolute; left: 50%; top: 50%; width: 360px; height: 360px; margin: -180px 0 0 -180px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--mint), transparent 55%), transparent 65%); transform: translateZ(-120px); filter: blur(10px); }
   .boden { position: absolute; left: 50%; bottom: 6px; width: 220px; height: 34px; margin-left: -110px; border-radius: 50%; background: radial-gradient(ellipse, rgba(var(--schatten), 0.35), transparent 70%); filter: blur(6px); animation: boden 6s ease-in-out infinite; }
 
   @property --dreh { syntax: '<angle>'; inherits: true; initial-value: -22deg; }
@@ -271,10 +271,10 @@ const zahlen = [
   .knopf--power { right: -3px; top: 140px; height: 70px; }
   .phone__front { transform: translateZ(11px); background: #07090a; padding: 9px; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.18), inset 0 0 0 3px #1b1f21; }
   .phone__screen { position: relative; height: 100%; border-radius: 31px; overflow: hidden; background:
-    radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--secondary), transparent 35%), transparent 45%),
-    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--green-500), transparent 55%), transparent 50%),
-    linear-gradient(170deg, #ffffff, var(--green-100) 55%, color-mix(in srgb, var(--secondary), white 40%)); }
-  .phone__status { position: absolute; top: 10px; left: 20px; right: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; color: var(--green-900); z-index: 3; }
+    radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--mint), transparent 35%), transparent 45%),
+    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--mint-dunkel), transparent 55%), transparent 50%),
+    linear-gradient(170deg, #ffffff, var(--mint-zart) 55%, color-mix(in srgb, var(--mint), white 40%)); }
+  .phone__status { position: absolute; top: 10px; left: 20px; right: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; color: var(--ink); z-index: 3; }
   .phone__icons { display: inline-flex; gap: 3px; align-items: center; }
   .phone__insel { position: absolute; top: 9px; left: 50%; width: 56px; height: 18px; margin-left: -28px; border-radius: 12px; background: #000; z-index: 4; }
   .phone__crack { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; animation: crack 6s ease-in-out infinite; }
@@ -295,12 +295,12 @@ const zahlen = [
 
   /* Reparatur ist das Kerngeschäft: eigene, große Fläche; die übrigen Leistungen ordnen sich darunter ein */
   .leistungen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 40px; margin-top: 32px; }
-  .haupt { grid-column: 1 / -1; display: flex; gap: 28px; align-items: flex-start; padding: 36px; border-radius: var(--radius); background: var(--green-100); }
+  .haupt { grid-column: 1 / -1; display: flex; gap: 28px; align-items: flex-start; padding: 36px; border-radius: var(--radius); background: var(--mint-zart); }
   .haupt h3 { font-size: 1.6rem; }
   .haupt p { max-width: 620px; margin-bottom: 24px; }
-  .haupt__icon { flex-shrink: 0; width: 72px; height: 72px; display: grid; place-items: center; border-radius: 16px; background: var(--green-700); color: var(--white); }
+  .haupt__icon { flex-shrink: 0; width: 72px; height: 72px; display: grid; place-items: center; border-radius: 16px; background: var(--mint); color: var(--icon-gruen); }
   .neben { padding-top: 20px; border-top: 2px solid rgba(var(--schatten), 0.12); }
-  .neben :global(.neben__icon) { color: var(--green-500); margin-bottom: 10px; }
+  .neben :global(.neben__icon) { color: var(--icon-gruen); margin-bottom: 10px; }
   .neben p { color: var(--ink-soft); margin: 0; }
   @media (max-width: 860px) {
     .leistungen { grid-template-columns: 1fr; gap: 28px; }
@@ -313,21 +313,21 @@ const zahlen = [
   .rabatt { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
   .rabatt p { margin: 0; }
 
-  .wert { padding-top: 20px; border-top: 3px solid var(--green-500); }
+  .wert { padding-top: 20px; border-top: 3px solid var(--mint); }
   .wert p { color: var(--ink-soft); }
 
   .ueber { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
   .zahlen { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .zahl { position: relative; background: linear-gradient(160deg, #ffffff, color-mix(in srgb, var(--green-100), white 55%)); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
-  .zahl__wert { display: block; font-family: 'Poppins', system-ui, sans-serif; font-size: 2.6rem; color: var(--green-700); line-height: 1; margin-bottom: 8px; }
+  .zahl { position: relative; background: linear-gradient(160deg, #ffffff, color-mix(in srgb, var(--mint-zart), white 55%)); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+  .zahl__wert { display: block; font-family: 'Poppins', system-ui, sans-serif; font-size: 2.6rem; color: var(--icon-gruen); line-height: 1; margin-bottom: 8px; }
   .zahl__label { color: var(--ink-soft); font-size: 0.95rem; }
 
   .kontakt { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
   .kontakt__liste strong { display: inline-flex; align-items: center; gap: 8px; }
-  .kontakt__liste strong :global(.icon) { color: var(--green-500); }
+  .kontakt__liste strong :global(.icon) { color: var(--icon-gruen); }
   .kontakt__liste { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
   .kontakt__liste li { display: grid; grid-template-columns: 200px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(var(--schatten), 0.08); }
-  .karte { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); min-height: 380px; background: var(--green-100); }
+  .karte { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); min-height: 380px; background: var(--mint-zart); }
   .karte__platzhalter { height: 100%; min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; }
   .karte__platzhalter :global(iframe) { width: 100%; height: 100%; min-height: 380px; border: 0; }
   .karte__platzhalter:has(iframe) { padding: 0; }
