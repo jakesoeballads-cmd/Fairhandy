@@ -27,7 +27,6 @@ const zahlen = [
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__text">
-        <p class="eyebrow">Handyreparatur in {site.city}</p>
         <h1>Ihr Handy kaputt? Wir machen es wieder <em>fair</em> ganz.</h1>
         <p class="lead">{site.tagline}. Reparaturen, gebrauchte Smartphones und nachhaltiges Zubehör zu fairen Preisen, mit bis zu 12 Monaten Garantie.</p>
         <div class="btn-row">
@@ -110,7 +109,7 @@ const zahlen = [
         <h2>10 % Rabatt bei mehreren Reparaturen</h2>
         <p>Buchen Sie mehrere Reparaturen auf einmal und sparen Sie 10 % auf den Gesamtpreis.</p>
       </div>
-      <a class="btn btn--accent" href="/reparatur/"><Icon name="mdiSale" size={20} /> Preise ansehen</a>
+      {site.bookingAktiv && <a class="btn btn--accent" href="/reparatur/"><Icon name="mdiSale" size={20} /> Preise ansehen</a>}
     </div>
   </section>
 
